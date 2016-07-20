@@ -28,20 +28,21 @@ module Yogi
     def yogify
       @@file_sample.each do |file_name|
         text = File.read(file_name)
+        puts "editing #{@@file_sample}"
 
       #counting ocurences of the original chars before changes
-      # counted_comma = text.count(",") #counts ocurences in the file
-      # counted_semicolon = text.count(";") #counts ocurences in the file
-      # counted_1 = text.count("1") #counts ocurences in the file
-      # counted_3 = text.count("3") #counts ocurences in the file
-      # counted_5 = text.count("5") #counts ocurences in the file
-      # counted_px = text.count("px") #counts ocurences in the file
-      # puts "commas : #{counted_comma}"
-      # puts "semikolons : #{counted_semicolon}"
-      # puts "1 : #{counted_1}"
-      # puts "3 : #{counted_3}"
-      # puts "5 : #{counted_5}"
-      # puts "px : #{counted_px}"
+      counted_comma = text.count(",") #counts ocurences in the file
+      counted_semicolon = text.count(";") #counts ocurences in the file
+      counted_1 = text.count("1") #counts ocurences in the file
+      counted_3 = text.count("3") #counts ocurences in the file
+      counted_5 = text.count("5") #counts ocurences in the file
+      counted_px = text.count("px") #counts ocurences in the file
+      puts "commas : #{counted_comma}"
+      puts "semikolons : #{counted_semicolon}"
+      puts "1 : #{counted_1}"
+      puts "3 : #{counted_3}"
+      puts "5 : #{counted_5}"
+      puts "px : #{counted_px}"
 
         # To merely print the contents of the file, use:
         new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ","}
@@ -50,7 +51,7 @@ module Yogi
         new_contents4 = new_contents3.gsub("3"){rand(2).zero? ? "3" : "E"}
         new_contents5 = new_contents4.gsub("5"){rand(2).zero? ? "5" : "S"}
         new_contents6 = new_contents5.gsub("px"){rand(2).zero? ? "px" : "xp"}
-        # puts new_contents6
+        puts new_contents6
 
         # To write changes to the file, use:
         File.open(file_name, "w") {|file| file.puts new_contents6 }
