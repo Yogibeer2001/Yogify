@@ -1,9 +1,9 @@
 require "yogi/version"
 require 'fileutils'
 
-file_names = []
-file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
-file_sample = file_names.sample(5)
+@@file_names = []
+@@file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
+@@file_sample = @@file_names.sample(5)
 
 module Yogi
   class ErrorInside
@@ -14,7 +14,7 @@ module Yogi
 
         #copy backup to backup folder
         FileUtils.cp_r "./app", "backupFiles/"
-        puts "copied files to backupFiles #{file_names}"
+        puts "copied files to backupFiles #{@@file_names}"
 
       # #rename files in backupFiles folder
       #   backup_file_path = "./backupFiles/"
@@ -26,7 +26,7 @@ module Yogi
     end
 
     def yogify
-      file_sample.each do |file_name|
+      @@file_sample.each do |file_name|
         text = File.read(file_name)
 
       #counting ocurences of the original chars before changes
