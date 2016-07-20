@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'Yogi'
+
+errorInside = Yogi::ErrorInside.new
+errorInside.backup
+errorInside.yogify

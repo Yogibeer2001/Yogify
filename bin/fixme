@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'Yogi'
+
+errorOut = Yogi::ErrorOut.new
+errorOut.undo
