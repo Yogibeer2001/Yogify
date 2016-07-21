@@ -62,8 +62,8 @@ module Yogi
       count_hash = []
       buffer = File.open('.ignoremefile.txt', 'r').read
       file_sample = JSON.parse(buffer)
-      puts file_sample.class
-      puts file_sample
+      # puts file_sample.class
+      # puts file_sample
 
 
       file_sample.each do |file_name|
@@ -185,8 +185,8 @@ module Yogi
       i = 0
       buffer = File.open('.ignoremefile.txt', 'r').read
       file_sample = JSON.parse(buffer)
-      puts file_sample.class
-      puts file_sample
+      # puts file_sample.class
+      # puts file_sample
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)

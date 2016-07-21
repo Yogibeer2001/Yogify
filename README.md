@@ -3,17 +3,17 @@
 When new to rails getting used to error codes and debugging is quite helpful.
 to practice your debugging skills you can use this gem.
 
-Currently are just the activate and the fixme function working.
-to later stage a checkme will be included to keep track of your debugging progress.
+Currently are just the basic 2 operations are working. So good enough to start practice your debugging skills, and when you get stuck you can fix your project anytime with just one word.
+To later stage a checkme will be included to keep track of your debugging progress.
 
-latest stable version 0.2.4.
+latest stable version 0.2.5.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yogi'
+gem 'yogi', '~> 0.2.5'
 ```
 
 And then execute:
@@ -30,6 +30,9 @@ type "activate" to generate some errors in your rails project...happy debugging.
 
 sick of debugging type "fixme"
 
+## in Planing
+ checkme executable to check on fixed error status and better feedback on debugging status
+ increase in error complexity
 
 ## Contributing
 
