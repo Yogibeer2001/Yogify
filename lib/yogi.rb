@@ -1,5 +1,6 @@
 require "yogi/version"
 require 'fileutils'
+require 'json'
 
 $file_names = []
 $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
@@ -61,8 +62,17 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
 
-        array << $pre_counted_comma << $pre_counted_semicolon << $pre_counted_l << $pre_counted_s << $pre_counted_bracket << $pre_counted_px
-        File.open('.ignoreme', "w") {|file| file.puts array}                                  }
+        pre_count_hash {
+          "pre_counted_comma" => $pre_counted_comma,
+          "pre_counted_semicolon" => $pre_counted_semicolon,
+          "pre_counted_l" => $pre_counted_l,
+          "pre_counted_3" => $pre_counted_3,
+          "pre_counted_s" => $pre_counted_s,
+          "pre_counted_bracket" => $pre_counted_bracket,
+          "pre_counted_px" => $pre_counted_px,
+
+        }
+        File.open('.ignoreme', "a") {|file| file.puts pre_count_hash}                                  }
 
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
@@ -129,9 +139,9 @@ module Yogi
         # puts "px : #{$pre_diff_px}"
 
       end
+      counter_test = IO.readlines(".ignoreme")[0]
+      puts "pre_counted_l schould be : #{counter_test}"
     end
-    counter_test = IO.readlines(".ignoreme")[0]
-    puts "pre_counted_l schould be : #{counter_test}"
   end
 
   class CheckErrors
