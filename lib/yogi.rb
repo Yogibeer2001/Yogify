@@ -55,9 +55,12 @@ module Yogi
     def yogify
       count_hash = []
       buffer = File.open('.ignoremefile', 'r').read
-      $file_sample = JSON.parse(buffer)
+      file_sample = JSON.parse(buffer) rescue []
+      puts file_sample.class
+      puts file_sample
 
-      $file_sample.each do |file_name|
+
+      file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
         $pre_counted_comma = count_em(text,",")
@@ -173,10 +176,11 @@ module Yogi
     end
 
     def checker
-      puts "test 1"
       i = 0
       buffer = File.open('.ignoremefile', 'r').read
-      file_sample = JSON.parse(buffer)
+      file_sample = JSON.parse(buffer) rescue []
+      puts file_sample.class
+      puts file_sample
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
@@ -293,7 +297,7 @@ puts "test loop"
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
-      FileUtils.rm_r '.ignoremefile.json'
+      FileUtils.rm_r '.ignoremefile'
       puts " Hope You had fun and try it again later."
     end
   end
