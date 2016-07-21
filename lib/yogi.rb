@@ -4,14 +4,20 @@ require 'fileutils'
 require 'json'
 
 
-$file_names = []
-$file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
-$sample_size = 5
-$file_sample = $file_names.sample($sample_size)
-File.open('.ignoremefile', "a") {|file| file.puts $file_sample.to_json}
 
 
 module Yogi
+
+  class Setup
+    def setup
+      $file_names = []
+      $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
+      $sample_size = 5
+      $file_sample = $file_names.sample($sample_size)
+      File.open('.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
+    end
+  end
+
   $pre_counted_comma = 0
   $pre_counted_semicolon = 0
   $pre_counted_l = 0
@@ -54,8 +60,8 @@ module Yogi
 
     def yogify
       count_hash = []
-      buffer = File.open('.ignoremefile', 'r').read
-      file_sample = JSON.parse(buffer) rescue []
+      buffer = File.open('.ignoremefile.txt', 'r').read
+      file_sample = JSON.parse(buffer)
       puts file_sample.class
       puts file_sample
 
@@ -177,8 +183,8 @@ module Yogi
 
     def checker
       i = 0
-      buffer = File.open('.ignoremefile', 'r').read
-      file_sample = JSON.parse(buffer) rescue []
+      buffer = File.open('.ignoremefile.txt', 'r').read
+      file_sample = JSON.parse(buffer)
       puts file_sample.class
       puts file_sample
 
@@ -297,7 +303,7 @@ puts "test loop"
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
-      FileUtils.rm_r '.ignoremefile'
+      FileUtils.rm_r '.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
     end
   end
