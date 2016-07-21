@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'Yogi'
+
+errorCheck = Yogi::CheckErrors.new
+errorCheck.checker
