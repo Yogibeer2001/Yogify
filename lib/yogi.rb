@@ -71,7 +71,7 @@ module Yogi
           "pre_counted_bracket" => $pre_counted_bracket,
           "pre_counted_px" => $pre_counted_px,
         }
-        File.open('.ignoreme.json', "a") {|file| file.writes pre_count_hash.to_json}
+        File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
 
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
