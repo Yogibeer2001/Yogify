@@ -52,16 +52,18 @@ module Yogi
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
 
-pre_counted_hash {
-        $pre_counted_comma => count_em(text,","),
-        $pre_counted_semicolon => count_em(text,";"),
-        $pre_counted_l => count_em(text,"l"),
-        $pre_counted_3 => count_em(text,"3"),
-        $pre_counted_s => count_em(text,"s"),
-        $pre_counted_bracket => count_em(text,"}"),
-        $pre_counted_px => count_em(text,"px")
-}
-       File.open('.ignoreme', "w") {|file| file.puts pre_counted_hash}
+
+        $pre_counted_comma = count_em(text,",")
+        $pre_counted_semicolon = count_em(text,";")
+        $pre_counted_l = count_em(text,"l")
+        $pre_counted_3 = count_em(text,"3")
+        $pre_counted_s = count_em(text,"s")
+        $pre_counted_bracket = count_em(text,"}")
+        $pre_counted_px = count_em(text,"px")
+
+        array << $pre_counted_comma << $pre_counted_semicolon << $pre_counted_l << $pre_counted_s << $pre_counted_bracket << $pre_counted_px
+        File.open('.ignoreme', "w") {|file| file.puts array}                                  }
+
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
         # puts "l : #{$pre_counted_l}"
@@ -128,6 +130,8 @@ pre_counted_hash {
 
       end
     end
+    counter_test = IO.readlines(".ignoreme")[0]
+    puts "pre_counted_l schould be : #{counter_test}"
   end
 
   class CheckErrors
