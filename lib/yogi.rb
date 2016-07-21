@@ -4,7 +4,8 @@ require 'json'
 
 $file_names = []
 $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
-$file_sample = $file_names.sample(5)
+$sample_size = 5
+$file_sample = $file_names.sample($sample_size)
 
 
 module Yogi
@@ -49,6 +50,7 @@ module Yogi
     end
 
     def yogify
+      count_hash = []
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
@@ -119,7 +121,7 @@ module Yogi
         $pre_diff_bracket = $pre_counted_bracket - post_counted_bracket
         $pre_diff_px = $pre_counted_px - post_counted_px
 
-        pre_count_hash = { :file_name =>[
+        pre_count_hash = {file_name => {
           "pre_counted_comma": $pre_counted_comma,
           "pre_counted_semicolon": $pre_counted_semicolon,
           "pre_counted_l": $pre_counted_l,
@@ -134,8 +136,8 @@ module Yogi
           "pre_diff_s": $pre_diff_s,
           "pre_diff_bracket": $pre_diff_bracket,
           "pre_diff_px": $pre_diff_px
-          ]}
-          File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
+        }}
+          count_hash << pre_count_hash
 
 
 
@@ -149,12 +151,15 @@ module Yogi
         # puts "} : #{$pre_diff_bracket}"
         # puts "px : #{$pre_diff_px}"
 
-        json_file = File.read(".ignoreme.json")
-        variable_hash = JSON.parse(json_file)
-        counter_test = variable_hash[file_name]
-        puts "pre_counted_l schould be : #{counter_test}"
+        # json_file = File.read(".ignoreme.json")
+        # variable_hash = JSON.parse(json_file)
+        # # counter_test = variable_hash[file_name]
+        # puts "pre_counted_l schould be : #{variable_hash}"
       end
+      File.open('.ignoreme.json', "a") {|file| file.write count_hash.to_json}
     end
+    puts "You can start your debugging..."
+    puts "if your are sick of it, just type...'fixme'"
   end
 
   class CheckErrors
@@ -164,6 +169,8 @@ module Yogi
     end
 
     def checker
+
+      i = 0
 
     puts  $pre_diff_comma
     puts  $pre_diff_semicolon
@@ -191,13 +198,35 @@ module Yogi
         # puts "s : #{post_counted_s}"
         # puts "} : #{post_counted_bracket}"
         # puts "px : #{post_counted_px}"
-puts ($pre_counted_comma)
-puts ($pre_counted_semicolon)
-puts ($pre_counted_l)
-puts ($pre_counted_3)
-puts ($pre_counted_s)
-puts ($pre_counted_bracket)
-puts ($pre_counted_px)
+
+
+
+        json_file = File.read(".ignoreme.json")
+        variable_hash = JSON.parse(json_file)
+        $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
+        $pre_counted_semicolon = variable_hash[i][file_name]['pre_counted_semicolon']
+        $pre_counted_l = variable_hash[i][file_name]['pre_counted_l']
+        $pre_counted_3 = variable_hash[i][file_name]['pre_counted_3']
+        $pre_counted_s = variable_hash[i][file_name]['pre_counted_s']
+        $pre_counted_bracket = variable_hash[i][file_name]['pre_counted_bracket']
+        $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
+        $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
+        $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
+        $pre_diff_l = variable_hash[i][file_name]['pre_diff_l']
+        $pre_diff_3 = variable_hash[i][file_name]['pre_diff_3']
+        $pre_diff_s = variable_hash[i][file_name]['pre_diff_s']
+        $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
+        $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
+        i += 1
+        # puts "pre_counted_l schould be : #{counter_test}"
+        # puts '==========================================='
+        # puts ($pre_counted_comma)
+        # puts ($pre_counted_semicolon)
+        # puts ($pre_counted_l)
+        # puts ($pre_counted_3)
+        # puts ($pre_counted_s)
+        # puts ($pre_counted_bracket)
+        # puts ($pre_counted_px)
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
         post_diff_l = $pre_counted_l - post_counted_l
@@ -274,6 +303,7 @@ puts ($pre_counted_px)
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
+      puts " Hope You had fun and try it again later."
     end
   end
 
