@@ -62,15 +62,15 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
 
-        pre_count_hash = { file_name [
-          "pre_counted_comma" => $pre_counted_comma,
-          "pre_counted_semicolon" => $pre_counted_semicolon,
-          "pre_counted_l" => $pre_counted_l,
-          "pre_counted_3" => $pre_counted_3,
-          "pre_counted_s" => $pre_counted_s,
-          "pre_counted_bracket" => $pre_counted_bracket,
-          "pre_counted_px" => $pre_counted_px,
-        ]}
+        pre_count_hash = { file_name => {
+          :"pre_counted_comma" => $pre_counted_comma,
+          :"pre_counted_semicolon" => $pre_counted_semicolon,
+          :"pre_counted_l" => $pre_counted_l,
+          :"pre_counted_3" => $pre_counted_3,
+          :"pre_counted_s" => $pre_counted_s,
+          :"pre_counted_bracket" => $pre_counted_bracket,
+          :"pre_counted_px" => $pre_counted_px
+        }}
         File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
 
         # puts "commas : #{$pre_counted_comma}"
