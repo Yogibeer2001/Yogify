@@ -53,12 +53,12 @@ module Yogi
         # puts "editing #{$file_sample}"
 
 pre_counted_hash {
-        $pre_counted_comma => count_em(text,",")
-        $pre_counted_semicolon => count_em(text,";")
-        $pre_counted_l => count_em(text,"l")
-        $pre_counted_3 => count_em(text,"3")
-        $pre_counted_s => count_em(text,"s")
-        $pre_counted_bracket => count_em(text,"}")
+        $pre_counted_comma => count_em(text,","),
+        $pre_counted_semicolon => count_em(text,";"),
+        $pre_counted_l => count_em(text,"l"),
+        $pre_counted_3 => count_em(text,"3"),
+        $pre_counted_s => count_em(text,"s"),
+        $pre_counted_bracket => count_em(text,"}"),
         $pre_counted_px => count_em(text,"px")
 }
        File.open('.ignoreme', "w") {|file| file.puts pre_counted_hash}
