@@ -48,13 +48,13 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
 
-        puts "commas : #{$pre_counted_comma}"
-        puts "semikolons : #{$pre_counted_semicolon}"
-        puts "l : #{$pre_counted_l}"
-        puts "3 : #{$pre_counted_3}"
-        puts "s : #{$pre_counted_s}"
-        puts "} : #{$pre_counted_bracket}"
-        puts "px : #{$pre_counted_px}"
+        # puts "commas : #{$pre_counted_comma}"
+        # puts "semikolons : #{$pre_counted_semicolon}"
+        # puts "l : #{$pre_counted_l}"
+        # puts "3 : #{$pre_counted_3}"
+        # puts "s : #{$pre_counted_s}"
+        # puts "} : #{$pre_counted_bracket}"
+        # puts "px : #{$pre_counted_px}"
 
         #counts total symbols to be effected
         # pre_total = pre_counted_comma + pre_counted_semicolon + pre_counted_l + pre_counted_3 + pre_counted_s + pre_counted_bracket + pre_counted_px
@@ -75,7 +75,7 @@ module Yogi
         File.open(file_name, "w") {|file| file.puts new_contents7 }
 
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
-        puts text
+        # puts text
         #counts ocurences in the file after initial change
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
@@ -85,13 +85,13 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
 
-        puts "commas : #{post_counted_comma}"
-        puts "semikolons : #{post_counted_semicolon}"
-        puts "l : #{post_counted_l}"
-        puts "3 : #{post_counted_3}"
-        puts "s : #{post_counted_s}"
-        puts "} : #{post_counted_bracket}"
-        puts "px : #{post_counted_px}"
+        # puts "commas : #{post_counted_comma}"
+        # puts "semikolons : #{post_counted_semicolon}"
+        # puts "l : #{post_counted_l}"
+        # puts "3 : #{post_counted_3}"
+        # puts "s : #{post_counted_s}"
+        # puts "} : #{post_counted_bracket}"
+        # puts "px : #{post_counted_px}"
         #counts total symbols to be effected
         # post_total = post_counted_comma + post_counted_semicolon + post_counted_l + post_counted_3 + post_counted_s + post_counted_bracket + post_counted_px
         # puts post_total
@@ -104,13 +104,13 @@ module Yogi
         $pre_diff_bracket = $pre_counted_bracket - post_counted_bracket
         $pre_diff_px = $pre_counted_px - post_counted_px
 
-        puts "commas : #{$pre_diff_comma}"
-        puts "semikolons : #{$pre_diff_semicolon}"
-        puts "l : #{$pre_diff_l}"
-        puts "3 : #{$pre_diff_3}"
-        puts "s : #{$pre_diff_s}"
-        puts "} : #{$pre_diff_bracket}"
-        puts "px : #{$pre_diff_px}"
+        # puts "commas : #{$pre_diff_comma}"
+        # puts "semikolons : #{$pre_diff_semicolon}"
+        # puts "l : #{$pre_diff_l}"
+        # puts "3 : #{$pre_diff_3}"
+        # puts "s : #{$pre_diff_s}"
+        # puts "} : #{$pre_diff_bracket}"
+        # puts "px : #{$pre_diff_px}"
 
       end
     end
@@ -133,14 +133,15 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
 
-        puts "commas : #{post_counted_comma}"
-        puts "semikolons : #{post_counted_semicolon}"
-        puts "l : #{post_counted_l}"
-        puts "3 : #{post_counted_3}"
-        puts "s : #{post_counted_s}"
-        puts "} : #{post_counted_bracket}"
-        puts "px : #{post_counted_px}"
-
+        # puts "commas : #{post_counted_comma}"
+        # puts "semikolons : #{post_counted_semicolon}"
+        # puts "l : #{post_counted_l}"
+        # puts "3 : #{post_counted_3}"
+        # puts "s : #{post_counted_s}"
+        # puts "} : #{post_counted_bracket}"
+        # puts "px : #{post_counted_px}"
+puts $pre_counted_comma
+puts post_counted_comma
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
         post_diff_l = $pre_counted_l - post_counted_l
