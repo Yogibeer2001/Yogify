@@ -4,23 +4,24 @@ require 'fileutils'
 $file_names = []
 $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
 $file_sample = $file_names.sample(5)
-$pre_counted_comma = 0
-$pre_counted_semicolon = 0
-$pre_counted_l = 0
-$pre_counted_3 = 0
-$pre_counted_s = 0
-$pre_counted_bracket = 0
-$pre_counted_px = 0
 
-$pre_diff_comma = 0
-$pre_diff_semicolon = 0
-$pre_diff_l = 0
-$pre_diff_3 = 0
-$pre_diff_s = 0
-$pre_diff_bracket = 0
-$pre_diff_px = 0
 
 module Yogi
+  $pre_counted_comma = 0
+  $pre_counted_semicolon = 0
+  $pre_counted_l = 0
+  $pre_counted_3 = 0
+  $pre_counted_s = 0
+  $pre_counted_bracket = 0
+  $pre_counted_px = 0
+
+  $pre_diff_comma = 0
+  $pre_diff_semicolon = 0
+  $pre_diff_l = 0
+  $pre_diff_3 = 0
+  $pre_diff_s = 0
+  $pre_diff_bracket = 0
+  $pre_diff_px = 0
 
   def count_em(text, substring)
     text.scan(/(?=#{substring})/).count
@@ -139,13 +140,13 @@ module Yogi
 
     def checker
 
-    puts  $pre_diff_comma = 0
-    puts  $pre_diff_semicolon = 0
-    puts  $pre_diff_l = 0
-    puts  $pre_diff_3 = 0
-    puts  $pre_diff_s = 0
-    puts  $pre_diff_bracket = 0
-    puts  $pre_diff_px = 0
+    puts  $pre_diff_comma
+    puts  $pre_diff_semicolon
+    puts  $pre_diff_l
+    puts  $pre_diff_3
+    puts  $pre_diff_s
+    puts  $pre_diff_bracket
+    puts  $pre_diff_px
 
 
       $file_sample.each do |file_name|
