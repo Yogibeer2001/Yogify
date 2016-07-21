@@ -172,15 +172,6 @@ module Yogi
 
       i = 0
 
-    puts  $pre_diff_comma
-    puts  $pre_diff_semicolon
-    puts  $pre_diff_l
-    puts  $pre_diff_3
-    puts  $pre_diff_s
-    puts  $pre_diff_bracket
-    puts  $pre_diff_px
-
-
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         post_counted_comma = count_em(text,",")
