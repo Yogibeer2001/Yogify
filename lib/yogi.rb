@@ -62,7 +62,7 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
 
-        pre_count_hash = {
+        pre_count_hash = { file_name [
           "pre_counted_comma" => $pre_counted_comma,
           "pre_counted_semicolon" => $pre_counted_semicolon,
           "pre_counted_l" => $pre_counted_l,
@@ -70,7 +70,7 @@ module Yogi
           "pre_counted_s" => $pre_counted_s,
           "pre_counted_bracket" => $pre_counted_bracket,
           "pre_counted_px" => $pre_counted_px,
-        }
+        ]}
         File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
 
         # puts "commas : #{$pre_counted_comma}"
@@ -138,7 +138,7 @@ module Yogi
         # puts "px : #{$pre_diff_px}"
 
       end
-      counter_test = IO.readlines(".ignoreme")[0]
+      counter_test = IO.readlines(".ignoreme.json")[0]
       puts "pre_counted_l schould be : #{counter_test}"
     end
   end
@@ -259,7 +259,7 @@ puts ($pre_counted_px)
       end
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
-      FileUtils.rm_r '.ignoreme'
+      FileUtils.rm_r '.ignoreme.json'
     end
   end
 

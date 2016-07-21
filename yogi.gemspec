@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["Langnickel.thomas@gmail.com"]
 
   spec.summary       = %q{practice debugging skills}
-  spec.description   = %q{The Master of Syntax Error brings you... this exercise}
+  spec.description   = %q{The Master of Syntax Error brings you... this exercise please type "activate" to start the exercise ...debugg your project, or if your are sick of it just type "fixme" to fix the errors}
   spec.homepage      = "http://github.io/Yogibeer2001/Yogify"
   spec.license       = "MIT"
 
