@@ -292,12 +292,15 @@ module Yogi
   class ErrorOut
     def undo
       #undo changes originaly made.
+      if .backupFiles exist?
       Dir.foreach('.backupFiles') do |item|
         next if item == '.' or item == '..'
       FileUtils.cp_r ".backupFiles/"+ item, "./"
       # puts item
       # FileUtils.cp_r file_names, "backupFiles/"
-      end
+        end
+      else
+        puts "nothing to fix"
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
