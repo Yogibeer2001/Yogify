@@ -57,7 +57,7 @@ module Yogi
         puts "px : #{$pre_counted_px}"
 
         #counts total symbols to be effected
-        pre_total = pre_counted_comma + pre_counted_semicolon + pre_counted_l + pre_counted_3 + pre_counted_s + pre_counted_bracket + pre_counted_px
+        # pre_total = pre_counted_comma + pre_counted_semicolon + pre_counted_l + pre_counted_3 + pre_counted_s + pre_counted_bracket + pre_counted_px
         # puts pre_total
 
         # To merely print the contents of the file, use:
@@ -93,7 +93,7 @@ module Yogi
         puts "} : #{post_counted_bracket}"
         puts "px : #{post_counted_px}"
         #counts total symbols to be effected
-        post_total = post_counted_comma + post_counted_semicolon + post_counted_l + post_counted_3 + post_counted_s + post_counted_bracket + post_counted_px
+        # post_total = post_counted_comma + post_counted_semicolon + post_counted_l + post_counted_3 + post_counted_s + post_counted_bracket + post_counted_px
         # puts post_total
 
         $pre_diff_comma = $pre_counted_comma - post_counted_comma
@@ -117,7 +117,7 @@ module Yogi
   end
 
   class CheckErrors
-    
+
     def count_em(text, substring)
       text.scan(/(?=#{substring})/).count
     end
