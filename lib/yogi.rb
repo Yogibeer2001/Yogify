@@ -6,6 +6,7 @@ $file_names = []
 $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
 $sample_size = 5
 $file_sample = $file_names.sample($sample_size)
+File.open('.ignoremefile.json', "a") {|file| file.write $file_sample.to_json}
 
 
 module Yogi
@@ -172,8 +173,11 @@ module Yogi
     def checker
 
       i = 0
-puts $file_sample
-      $file_sample.each do |file_name|
+      sample_file = File.read(".ignoremefile.json")
+      file_sample = JSON.parse(sample_file)
+
+
+      file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
@@ -195,31 +199,22 @@ puts $file_sample
 
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
-#         puts variable_hash
-#         puts file_name
-#         puts i
-# a = variable_hash[i]
-# puts a
-# b = variable_hash[i][file_name]
-# puts b
-# c = variable_hash[i][file_name]['pre_counted_comma']
-# puts c
 
 
-        # $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
-        # $pre_counted_semicolon = variable_hash[i][file_name]['pre_counted_semicolon']
-        # $pre_counted_l = variable_hash[i][file_name]['pre_counted_l']
-        # $pre_counted_3 = variable_hash[i][file_name]['pre_counted_3']
-        # $pre_counted_s = variable_hash[i][file_name]['pre_counted_s']
-        # $pre_counted_bracket = variable_hash[i][file_name]['pre_counted_bracket']
-        # $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
-        # $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
-        # $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
-        # $pre_diff_l = variable_hash[i][file_name]['pre_diff_l']
-        # $pre_diff_3 = variable_hash[i][file_name]['pre_diff_3']
-        # $pre_diff_s = variable_hash[i][file_name]['pre_diff_s']
-        # $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
-        # $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
+        $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
+        $pre_counted_semicolon = variable_hash[i][file_name]['pre_counted_semicolon']
+        $pre_counted_l = variable_hash[i][file_name]['pre_counted_l']
+        $pre_counted_3 = variable_hash[i][file_name]['pre_counted_3']
+        $pre_counted_s = variable_hash[i][file_name]['pre_counted_s']
+        $pre_counted_bracket = variable_hash[i][file_name]['pre_counted_bracket']
+        $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
+        $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
+        $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
+        $pre_diff_l = variable_hash[i][file_name]['pre_diff_l']
+        $pre_diff_3 = variable_hash[i][file_name]['pre_diff_3']
+        $pre_diff_s = variable_hash[i][file_name]['pre_diff_s']
+        $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
+        $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
         i += 1
         # puts "pre_counted_l schould be : #{counter_test}"
         # puts '==========================================='
