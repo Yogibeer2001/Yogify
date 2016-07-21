@@ -159,9 +159,9 @@ module Yogi
         # puts "pre_counted_l schould be : #{variable_hash}"
       end
       File.open('.ignoreme.json', "a") {|file| file.write count_hash.to_json}
+      puts "You can start your debugging..."
+      puts "if your are sick of it, just type...'fixme'"
     end
-    puts "You can start your debugging..."
-    puts "if your are sick of it, just type...'fixme'"
   end
 
   class CheckErrors
@@ -171,11 +171,11 @@ module Yogi
     end
 
     def checker
-
+puts "test 1"
       i = 0
       sample_file = File.read(".ignoremefile.json")
       file_sample = JSON.parse(sample_file)
-
+ puts 'test 2'
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
@@ -200,7 +200,7 @@ module Yogi
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
 
-
+puts "test loop"
         $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
         $pre_counted_semicolon = variable_hash[i][file_name]['pre_counted_semicolon']
         $pre_counted_l = variable_hash[i][file_name]['pre_counted_l']
@@ -216,15 +216,6 @@ module Yogi
         $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
         $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
         i += 1
-        # puts "pre_counted_l schould be : #{counter_test}"
-        # puts '==========================================='
-        # puts ($pre_counted_comma)
-        # puts ($pre_counted_semicolon)
-        # puts ($pre_counted_l)
-        # puts ($pre_counted_3)
-        # puts ($pre_counted_s)
-        # puts ($pre_counted_bracket)
-        # puts ($pre_counted_px)
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
         post_diff_l = $pre_counted_l - post_counted_l
@@ -298,8 +289,6 @@ module Yogi
       # puts item
       # FileUtils.cp_r file_names, "backupFiles/"
         end
-      else
-        puts "nothing to fix"
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
