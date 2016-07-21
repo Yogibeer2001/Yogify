@@ -140,8 +140,8 @@ module Yogi
         # puts "s : #{post_counted_s}"
         # puts "} : #{post_counted_bracket}"
         # puts "px : #{post_counted_px}"
-puts $pre_counted_comma
-puts post_counted_comma
+puts ($pre_counted_comma).class
+puts (post_counted_comma).class
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
         post_diff_l = $pre_counted_l - post_counted_l
