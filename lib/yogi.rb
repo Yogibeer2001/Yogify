@@ -64,7 +64,7 @@ module Yogi
         $pre_counted_px = count_em(text,"px")
 
         # puts "commas : #{$pre_counted_comma}"
-        # puts "semikolons : #{$pre_counted_semicolon}"
+        # puts "semicolons : #{$pre_counted_semicolon}"
         # puts "l : #{$pre_counted_l}"
         # puts "3 : #{$pre_counted_3}"
         # puts "s : #{$pre_counted_s}"
@@ -101,7 +101,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
 
         # puts "commas : #{post_counted_comma}"
-        # puts "semikolons : #{post_counted_semicolon}"
+        # puts "semicolons : #{post_counted_semicolon}"
         # puts "l : #{post_counted_l}"
         # puts "3 : #{post_counted_3}"
         # puts "s : #{post_counted_s}"
@@ -120,7 +120,7 @@ module Yogi
         $pre_diff_px = $pre_counted_px - post_counted_px
 
         # puts "commas : #{$pre_diff_comma}"
-        # puts "semikolons : #{$pre_diff_semicolon}"
+        # puts "semicolons : #{$pre_diff_semicolon}"
         # puts "l : #{$pre_diff_l}"
         # puts "3 : #{$pre_diff_3}"
         # puts "s : #{$pre_diff_s}"
@@ -149,7 +149,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
 
         # puts "commas : #{post_counted_comma}"
-        # puts "semikolons : #{post_counted_semicolon}"
+        # puts "semicolons : #{post_counted_semicolon}"
         # puts "l : #{post_counted_l}"
         # puts "3 : #{post_counted_3}"
         # puts "s : #{post_counted_s}"
@@ -172,12 +172,12 @@ puts (post_counted_comma).class
         end
         puts " #{comma_fix}% of comma errors fixed"
 
-        if $pre_diff_semikolon == 0
-           semikolon_fix = 100
+        if $pre_diff_semicolon == 0
+           semicolon_fix = 100
         else
-        semikolon_fix = (($pre_diff_semikolon - post_diff_semikolon)/$pre_diff_semikolon)*100
+        semicolon_fix = (($pre_diff_semicolon - post_diff_semicolon)/$pre_diff_semicolon)*100
         end
-        puts " #{semikolon_fix}% of comma errors fixed"
+        puts " #{semicolon_fix}% of comma errors fixed"
 
         if $pre_diff_l == 0
            l_fix = 100
