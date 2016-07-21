@@ -174,6 +174,7 @@ module Yogi
 puts "test 1"
       i = 0
       sample_file = File.read(".ignoremefile.json")
+      puts sample_file
       file_sample = JSON.parse(sample_file)
  puts 'test 2'
 
