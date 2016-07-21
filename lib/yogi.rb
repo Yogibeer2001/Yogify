@@ -149,7 +149,9 @@ module Yogi
         # puts "} : #{$pre_diff_bracket}"
         # puts "px : #{$pre_diff_px}"
 
-        counter_test = IO.readlines(".ignoreme.json")file_name.pre_counted_l
+        json_file = File.read(".ignoreme.json")
+        variable_hash = JSON.parse(json_file)
+        counter_test = variable_hash[file_name][2]
         puts "pre_counted_l schould be : #{counter_test}"
       end
     end
