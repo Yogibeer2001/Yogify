@@ -138,6 +138,16 @@ module Yogi
     end
 
     def checker
+
+    puts  $pre_diff_comma = 0
+    puts  $pre_diff_semicolon = 0
+    puts  $pre_diff_l = 0
+    puts  $pre_diff_3 = 0
+    puts  $pre_diff_s = 0
+    puts  $pre_diff_bracket = 0
+    puts  $pre_diff_px = 0
+
+
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         post_counted_comma = count_em(text,",")
@@ -155,8 +165,13 @@ module Yogi
         # puts "s : #{post_counted_s}"
         # puts "} : #{post_counted_bracket}"
         # puts "px : #{post_counted_px}"
-puts ($pre_counted_comma).class
-puts (post_counted_comma).class
+puts ($pre_counted_comma)
+puts ($pre_counted_semicolon)
+puts ($pre_counted_l)
+puts ($pre_counted_3)
+puts ($pre_counted_s)
+puts ($pre_counted_bracket)
+puts ($pre_counted_px)
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
         post_diff_l = $pre_counted_l - post_counted_l
