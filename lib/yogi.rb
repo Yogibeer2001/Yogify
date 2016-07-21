@@ -62,7 +62,7 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
 
-        pre_count_hash {
+        pre_count_hash = {
           "pre_counted_comma" => $pre_counted_comma,
           "pre_counted_semicolon" => $pre_counted_semicolon,
           "pre_counted_l" => $pre_counted_l,
