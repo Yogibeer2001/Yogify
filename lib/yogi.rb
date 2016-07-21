@@ -16,7 +16,7 @@ $pre_diff_comma = 0
 $pre_diff_semicolon = 0
 $pre_diff_l = 0
 $pre_diff_3 = 0
-$pre_counted_s = 0
+$pre_diff_s = 0
 $pre_diff_bracket = 0
 $pre_diff_px = 0
 
