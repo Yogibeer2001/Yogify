@@ -127,12 +127,12 @@ module Yogi
           :"pre_counted_s" => $pre_counted_s,
           :"pre_counted_bracket" => $pre_counted_bracket,
           :"pre_counted_px" => $pre_counted_px,
-          :"pre_diff_comma" => $pre_diff_comma
-          :"pre_diff_semicolon" => $pre_diff_semicolon
-          :"pre_diff_l" => $pre_diff_l
-          :"pre_diff_3" => $pre_diff_3
-          :"pre_diff_s" => $pre_diff_s
-          :"pre_diff_bracket" => $pre_diff_bracket
+          :"pre_diff_comma" => $pre_diff_comma,
+          :"pre_diff_semicolon" => $pre_diff_semicolon,
+          :"pre_diff_l" => $pre_diff_l,
+          :"pre_diff_3" => $pre_diff_3,
+          :"pre_diff_s" => $pre_diff_s,
+          :"pre_diff_bracket" => $pre_diff_bracket,
           :"pre_diff_px" => $pre_diff_px
           }}
           File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
