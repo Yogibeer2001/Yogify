@@ -1,15 +1,17 @@
+require 'rubygems'
 require "yogi/version"
 require 'fileutils'
 require 'json'
+
 
 $file_names = []
 $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
 $sample_size = 5
 $file_sample = $file_names.sample($sample_size)
+File.open('.ignoremefile', "a") {|file| file.puts $file_sample.to_json}
 
 
 module Yogi
-  File.open('.ignoremefile.json', "a") {|file| file.write $file_sample.to_json}
   $pre_counted_comma = 0
   $pre_counted_semicolon = 0
   $pre_counted_l = 0
@@ -52,15 +54,12 @@ module Yogi
 
     def yogify
       count_hash = []
-      sample_file = File.read(".ignoremefile.json")
-      # puts sample_file
-      file_sample = JSON.parse(sample_file)
+      buffer = File.open('.ignoremefile', 'r').read
+      $file_sample = JSON.parse(buffer)
 
-      file_sample.each do |file_name|
+      $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
-
-
         $pre_counted_comma = count_em(text,",")
         $pre_counted_semicolon = count_em(text,";")
         $pre_counted_l = count_em(text,"l")
@@ -176,10 +175,8 @@ module Yogi
     def checker
       puts "test 1"
       i = 0
-      sample_file = File.read(".ignoremefile.json")
-      # puts sample_file
-      file_sample = JSON.parse(sample_file)
-      # puts 'test 2'
+      buffer = File.open('.ignoremefile', 'r').read
+      file_sample = JSON.parse(buffer)
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
