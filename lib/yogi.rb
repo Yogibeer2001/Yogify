@@ -51,6 +51,7 @@ module Yogi
 
     def yogify
       count_hash = []
+      puts $file_sample
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
@@ -171,7 +172,7 @@ module Yogi
     def checker
 
       i = 0
-
+puts $file_sample
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         post_counted_comma = count_em(text,",")
@@ -194,15 +195,15 @@ module Yogi
 
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
-        puts variable_hash
-        puts file_name
-        puts i
-a = variable_hash[i]
-puts a
-b = variable_hash[i][file_name]
-puts b
-c = variable_hash[i][file_name]['pre_counted_comma']
-puts c
+#         puts variable_hash
+#         puts file_name
+#         puts i
+# a = variable_hash[i]
+# puts a
+# b = variable_hash[i][file_name]
+# puts b
+# c = variable_hash[i][file_name]['pre_counted_comma']
+# puts c
 
 
         # $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
