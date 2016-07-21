@@ -165,52 +165,52 @@ puts (post_counted_comma).class
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
 
-        if pre_diff_comma == 0
+        if $pre_diff_comma == 0
           comma_fix = 100
         else
-        comma_fix = ((pre_diff_comma - post_diff_comma)/pre_diff_comma)*100
+        comma_fix = (($pre_diff_comma - post_diff_comma)/$pre_diff_comma)*100
         end
         puts " #{comma_fix}% of comma errors fixed"
 
-        if semikolon_fix == 0
+        if $pre_diff_semikolon == 0
            semikolon_fix = 100
         else
-        semikolon_fix = ((pre_diff_semikolon - post_diff_semikolon)/pre_diff_semikolon)*100
+        semikolon_fix = (($pre_diff_semikolon - post_diff_semikolon)/$pre_diff_semikolon)*100
         end
         puts " #{semikolon_fix}% of comma errors fixed"
 
-        if l_fix == 0
+        if $pre_diff_l == 0
            l_fix = 100
         else
-        l_fix = ((pre_diff_l - post_diff_l)/pre_diff_l)*100
+        l_fix = (($pre_diff_l - post_diff_l)/$pre_diff_l)*100
         end
         puts " #{l_fix}% of comma errors fixed"
 
-        if three_fix == 0
+        if $pre_diff_3 == 0
            three_fix = 100
         else
-        three_fix = ((pre_diff_3 - post_diff_3)/pre_diff_3)*100
+        three_fix = (($pre_diff_3 - post_diff_3)/$pre_diff_3)*100
         end
         puts " #{three_fix}% of comma errors fixed"
 
-        if s_fix == 0
+        if $pre_diff_s == 0
            s_fix = 100
         else
-        s_fix = ((pre_diff_s - post_diff_s)/pre_diff_s)*100
+        s_fix = (($pre_diff_s - post_diff_s)/$pre_diff_s)*100
         end
         puts " #{s_fix}% of comma errors fixed"
 
-        if bracket_fix == 0
+        if $pre_diff_bracket == 0
            bracket_fix = 100
         else
-        bracket_fix = ((pre_diff_bracket - post_diff_bracket)/pre_diff_bracket)*100
+        bracket_fix = (($pre_diff_bracket - post_diff_bracket)/$pre_diff_bracket)*100
         end
         puts " #{bracket_fix}% of comma errors fixed"
 
-        if px_fix == 0
+        if $pre_diff_px == 0
            px_fix = 100
         else
-        px_fix = ((pre_diff_px - post_diff_px)/pre_diff_px)*100
+        px_fix = (($pre_diff_px - post_diff_px)/$pre_diff_px)*100
         end
         puts " #{px_fix}% of comma errors fixed"
       end
