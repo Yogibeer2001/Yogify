@@ -151,7 +151,7 @@ module Yogi
 
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
-        counter_test = variable_hash[file_name][2]
+        counter_test = variable_hash[file_name][pre_counted_s]
         puts "pre_counted_l schould be : #{counter_test}"
       end
     end
