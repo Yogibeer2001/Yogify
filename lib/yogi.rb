@@ -68,6 +68,8 @@ module Yogi
                                            file.puts $pre_counted_bracket
                                            file.puts $pre_counted_px
                                          }
+        counter_test = IO.readlines(".ignoreme")[1]
+       puts "pre_counted_comma schould be : #{counter_test}"
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
         # puts "l : #{$pre_counted_l}"
@@ -252,6 +254,7 @@ puts ($pre_counted_px)
       end
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
+      FileUtils.rm_r '.ignoreme'
     end
   end
 
