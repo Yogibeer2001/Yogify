@@ -119,22 +119,22 @@ module Yogi
         $pre_diff_bracket = $pre_counted_bracket - post_counted_bracket
         $pre_diff_px = $pre_counted_px - post_counted_px
 
-        pre_count_hash = { file_name => {
-          :"pre_counted_comma" => $pre_counted_comma,
-          :"pre_counted_semicolon" => $pre_counted_semicolon,
-          :"pre_counted_l" => $pre_counted_l,
-          :"pre_counted_3" => $pre_counted_3,
-          :"pre_counted_s" => $pre_counted_s,
-          :"pre_counted_bracket" => $pre_counted_bracket,
-          :"pre_counted_px" => $pre_counted_px,
-          :"pre_diff_comma" => $pre_diff_comma,
-          :"pre_diff_semicolon" => $pre_diff_semicolon,
-          :"pre_diff_l" => $pre_diff_l,
-          :"pre_diff_3" => $pre_diff_3,
-          :"pre_diff_s" => $pre_diff_s,
-          :"pre_diff_bracket" => $pre_diff_bracket,
-          :"pre_diff_px" => $pre_diff_px
-          }}
+        pre_count_hash = { :file_name =>[
+          "pre_counted_comma": $pre_counted_comma,
+          "pre_counted_semicolon": $pre_counted_semicolon,
+          "pre_counted_l": $pre_counted_l,
+          "pre_counted_3": $pre_counted_3,
+          "pre_counted_s": $pre_counted_s,
+          "pre_counted_bracket": $pre_counted_bracket,
+          "pre_counted_px": $pre_counted_px,
+          "pre_diff_comma": $pre_diff_comma,
+          "pre_diff_semicolon": $pre_diff_semicolon,
+          "pre_diff_l": $pre_diff_l,
+          "pre_diff_3": $pre_diff_3,
+          "pre_diff_s": $pre_diff_s,
+          "pre_diff_bracket": $pre_diff_bracket,
+          "pre_diff_px": $pre_diff_px
+          ]}
           File.open('.ignoreme.json', "a") {|file| file.write pre_count_hash.to_json}
 
 
@@ -149,10 +149,10 @@ module Yogi
         # puts "} : #{$pre_diff_bracket}"
         # puts "px : #{$pre_diff_px}"
 
-        json_file = File.read(".ignoreme.json")
-        variable_hash = JSON.parse(json_file)
-        counter_test = variable_hash[file_name][pre_counted_s]
-        puts "pre_counted_l schould be : #{counter_test}"
+        # json_file = File.read(".ignoreme.json")
+        # variable_hash = JSON.parse(json_file)
+        # counter_test = variable_hash[file_name][pre_counted_s]
+        # puts "pre_counted_l schould be : #{counter_test}"
       end
     end
   end
