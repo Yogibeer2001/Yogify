@@ -171,12 +171,12 @@ module Yogi
     end
 
     def checker
-puts "test 1"
+      puts "test 1"
       i = 0
       sample_file = File.read(".ignoremefile.json")
       puts sample_file
       file_sample = JSON.parse(sample_file)
- puts 'test 2'
+      puts 'test 2'
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
@@ -293,6 +293,7 @@ puts "test loop"
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'
       FileUtils.rm_r '.ignoreme.json'
+      FileUtils.rm_r '.ignoremefile.json'
       puts " Hope You had fun and try it again later."
     end
   end
