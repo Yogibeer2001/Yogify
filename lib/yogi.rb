@@ -12,6 +12,11 @@ module Yogi
   end
 
   class ErrorInside
+
+    def count_em(text, substring)
+      text.scan(/(?=#{substring})/).count
+    end
+
     def backup
       # creating backup directory
         FileUtils.mkdir_p '.backupFiles' unless File.exists?('.backupFiles')
@@ -112,6 +117,11 @@ module Yogi
   end
 
   class CheckErrors
+    
+    def count_em(text, substring)
+      text.scan(/(?=#{substring})/).count
+    end
+
     def checker
       $file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
