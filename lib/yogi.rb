@@ -322,10 +322,10 @@ module Yogi
         puts 'there must have gone something wrong...no errors to begin with'
       else
       fix = ((pre_diff - post_diff)/pre_diff)*100
-
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
       puts "================================="
+      end
     end
   end
 
