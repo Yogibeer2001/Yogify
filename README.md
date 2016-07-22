@@ -6,14 +6,14 @@ to practice your debugging skills you can use this gem.
 Currently are just the basic 2 operations are working. So good enough to start practice your debugging skills, and when you get stuck you can fix your project anytime with just one word.
 To later stage a checkme will be included to keep track of your debugging progress.
 
-latest stable version 0.2.5.
+latest stable version 0.2.5.5
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yogi', '~> 0.2.5'
+gem 'yogi', '~> 0.2.5.5'
 ```
 
 And then execute:
@@ -26,7 +26,9 @@ Or install it yourself as:
 
 ## Usage
 
-type "activate" to generate some errors in your rails project...happy debugging..(to check yourself type "checkme" ** not working jet**)
+type "activate" to generate some errors in your rails project...happy debugging..
+
+(to check yourself type "checkme" ** not working jet**)
 
 sick of debugging type "fixme"
 
