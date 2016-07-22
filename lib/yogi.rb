@@ -91,8 +91,8 @@ module Yogi
         # puts pre_total
 
         # To merely print the contents of the file, use:
-        new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ","}
-        new_contents2 = new_contents1.gsub(","){rand(2).zero? ? "," : ";"}
+        new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ":"}
+        new_contents2 = new_contents1.gsub(","){rand(2).zero? ? "," : " "}
         new_contents3 = new_contents2.gsub("l"){rand(2).zero? ? "l" : "1"}
         new_contents4 = new_contents3.gsub("3"){rand(2).zero? ? "3" : "E"}
         new_contents5 = new_contents4.gsub("s"){rand(2).zero? ? "s" : "5"}
@@ -183,6 +183,8 @@ module Yogi
 
     def checker
       i = 0
+      pre_diff_array = []
+      post_diff_array = []
       buffer = File.open('.ignoremefile.txt', 'r').read
       file_sample = JSON.parse(buffer)
       # puts file_sample.class
@@ -201,13 +203,6 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
 
-        puts " post commas : #{post_counted_comma}"
-        puts "post semicolons : #{post_counted_semicolon}"
-        puts "post l : #{post_counted_l}"
-        puts "post 3 : #{post_counted_3}"
-        puts "post s : #{post_counted_s}"
-        puts "post } : #{post_counted_bracket}"
-        puts "post px : #{post_counted_px}"
 
 
 
@@ -237,7 +232,24 @@ module Yogi
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
 
+        # total changes made in each file
+        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px
 
+        # total changes not fixed
+        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px
+
+        pre_diff_array << total_pre_diff
+        post_diff_array << total_post_diff
+
+
+        puts '--------------------------------------------------------------------'
+        puts "post commas : #{post_counted_comma}"
+        puts "post semicolons : #{post_counted_semicolon}"
+        puts "post l : #{post_counted_l}"
+        puts "post 3 : #{post_counted_3}"
+        puts "post s : #{post_counted_s}"
+        puts "post } : #{post_counted_bracket}"
+        puts "post px : #{post_counted_px}"
         puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{post_diff_comma}"
         puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{post_diff_semicolon}"
         puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{post_diff_l}"
@@ -252,7 +264,7 @@ module Yogi
         puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{post_counted_s}"
         puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{post_counted_bracket}"
         puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{post_counted_px}"
-
+        puts '--------------------------------------------------------------------'
 
 
       #   if $pre_diff_comma == 0
@@ -304,6 +316,16 @@ module Yogi
       #   end
       #   puts " #{px_fix}% of comma errors fixed"
       end
+      pre_diff = pre_diff_array.inject(0, :+)
+      post_diff = post_diff_array.inject(0, :+)
+      if pre_diff == 0
+        puts 'there must have gone something wrong...no errors to begin with'
+      else
+      fix = ((pre_diff - post_diff)/pre_diff)*100
+
+      puts "================================="
+      puts " You fixed #{fix}% of all the errors "
+      puts "================================="
     end
   end
 
