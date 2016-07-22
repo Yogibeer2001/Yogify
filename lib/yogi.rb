@@ -3,9 +3,6 @@ require "yogi/version"
 require 'fileutils'
 require 'json'
 
-
-
-
 module Yogi
 
   class Setup
@@ -65,7 +62,6 @@ module Yogi
       # puts file_sample.class
       # puts file_sample
 
-
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts "editing #{$file_sample}"
@@ -76,7 +72,6 @@ module Yogi
         $pre_counted_s = count_em(text,"s")
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
-
 
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
@@ -152,10 +147,6 @@ module Yogi
         }}
           count_hash << pre_count_hash
 
-
-
-
-
         # puts "commas : #{$pre_diff_comma}"
         # puts "semicolons : #{$pre_diff_semicolon}"
         # puts "l : #{$pre_diff_l}"
@@ -194,7 +185,6 @@ module Yogi
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
 
 
-
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
         post_counted_l = count_em(text,"l")
@@ -202,9 +192,6 @@ module Yogi
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
-
-
-
 
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
@@ -241,34 +228,32 @@ module Yogi
         pre_diff_array << total_pre_diff
         post_diff_array << total_post_diff
 
-
-        puts '--------------------------------------------------------------------'
-        puts "#{file_name}"
-        puts " total_pre_diff: #{total_pre_diff}"
-        puts " total_post_diff: #{total_post_diff}"
-        puts "post commas : #{post_counted_comma}"
-        puts "post semicolons : #{post_counted_semicolon}"
-        puts "post l : #{post_counted_l}"
-        puts "post 3 : #{post_counted_3}"
-        puts "post s : #{post_counted_s}"
-        puts "post } : #{post_counted_bracket}"
-        puts "post px : #{post_counted_px}"
-        puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{post_diff_comma}"
-        puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{post_diff_semicolon}"
-        puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{post_diff_l}"
-        puts  "pre_diff_3: #{$pre_diff_3} vs post_diff_3: #{post_diff_3}"
-        puts  "pre_diff_s: #{$pre_diff_s} vs post_diff_s: #{post_diff_s}"
-        puts  "pre_diff_bracket: #{$pre_diff_bracket} vs post_diff_bracket: #{post_diff_bracket}"
-        puts  "pre_diff_px: #{$pre_diff_px} vs post_diff_px: #{post_diff_px}"
-        puts  "pre_counted_comma: #{$pre_counted_comma} vs post_counted_comma: #{post_counted_comma}"
-        puts  "pre_counted_semicolon: #{$pre_counted_semicolon} vs post_counted_semicolon: #{post_counted_semicolon}"
-        puts  "pre_counted_l: #{$pre_counted_l} vs post_counted_l: #{post_counted_l}"
-        puts  "pre_counted_3: #{$pre_counted_3} vs post_counted_3: #{post_counted_3}"
-        puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{post_counted_s}"
-        puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{post_counted_bracket}"
-        puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{post_counted_px}"
-        puts '--------------------------------------------------------------------'
-
+        # puts '--------------------------------------------------------------------'
+        # puts "#{file_name}"
+        # puts " total_pre_diff: #{total_pre_diff}"
+        # puts " total_post_diff: #{total_post_diff}"
+        # puts "post commas : #{post_counted_comma}"
+        # puts "post semicolons : #{post_counted_semicolon}"
+        # puts "post l : #{post_counted_l}"
+        # puts "post 3 : #{post_counted_3}"
+        # puts "post s : #{post_counted_s}"
+        # puts "post } : #{post_counted_bracket}"
+        # puts "post px : #{post_counted_px}"
+        # puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{post_diff_comma}"
+        # puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{post_diff_semicolon}"
+        # puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{post_diff_l}"
+        # puts  "pre_diff_3: #{$pre_diff_3} vs post_diff_3: #{post_diff_3}"
+        # puts  "pre_diff_s: #{$pre_diff_s} vs post_diff_s: #{post_diff_s}"
+        # puts  "pre_diff_bracket: #{$pre_diff_bracket} vs post_diff_bracket: #{post_diff_bracket}"
+        # puts  "pre_diff_px: #{$pre_diff_px} vs post_diff_px: #{post_diff_px}"
+        # puts  "pre_counted_comma: #{$pre_counted_comma} vs post_counted_comma: #{post_counted_comma}"
+        # puts  "pre_counted_semicolon: #{$pre_counted_semicolon} vs post_counted_semicolon: #{post_counted_semicolon}"
+        # puts  "pre_counted_l: #{$pre_counted_l} vs post_counted_l: #{post_counted_l}"
+        # puts  "pre_counted_3: #{$pre_counted_3} vs post_counted_3: #{post_counted_3}"
+        # puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{post_counted_s}"
+        # puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{post_counted_bracket}"
+        # puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{post_counted_px}"
+        # puts '--------------------------------------------------------------------'
 
       #   if $pre_diff_comma == 0
       #     comma_fix = 100
@@ -319,15 +304,15 @@ module Yogi
       #   end
       #   puts " #{px_fix}% of comma errors fixed"
       end
-      puts " pre_diff_array: #{pre_diff_array}"
-      puts " post_diff_array: #{post_diff_array}"
+      # puts " pre_diff_array: #{pre_diff_array}"
+      # puts " post_diff_array: #{post_diff_array}"
 
 
-
+      #calulate the total differences to original and errors
       pre_diff = pre_diff_array.inject(0, :+)
-      puts "total of pre_diff #{pre_diff}"
+      # puts "total of pre_diff #{pre_diff}"
       post_diff = post_diff_array.inject(0, :+)
-      puts "total of post_diff #{post_diff}"
+      # puts "total of post_diff #{post_diff}"
       pre_diff = pre_diff.to_f
       post_diff = post_diff.to_f
 
@@ -345,9 +330,6 @@ module Yogi
   end
 
 
-
-
-
   class ErrorOut
     def undo
       #undo changes originaly made.
@@ -355,7 +337,6 @@ module Yogi
         next if item == '.' or item == '..'
       FileUtils.cp_r ".backupFiles/"+ item, "./"
       # puts item
-      # FileUtils.cp_r file_names, "backupFiles/"
         end
       #removes folder backupFiles
       FileUtils.rm_r '.backupFiles'

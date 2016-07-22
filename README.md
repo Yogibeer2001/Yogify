@@ -1,19 +1,21 @@
 # Yogi
 
-When new to rails getting used to error codes and debugging is quite helpful.
-to practice your debugging skills you can use this gem.
+When new to rails, getting used to error codes and debugging is quite helpful.
+To practice your debugging skills you can use this gem.
 
-Currently are just the basic 2 operations are working. So good enough to start practice your debugging skills, and when you get stuck you can fix your project anytime with just one word.
-To later stage a checkme will be included to keep track of your debugging progress.
+Currently are just the basic 3 operations are working.
+So this is good enough to start practice your debugging skills.
+You can check you progress or..
+when you get stuck,  you can fix your project anytime with just one word.
 
-latest stable version 0.2.5.5
+latest stable version 0.3.0
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yogi', '~> 0.2.5.5'
+gem 'yogi', '~> 0.3.0'
 ```
 
 And then execute:
@@ -26,15 +28,16 @@ Or install it yourself as:
 
 ## Usage
 
-type "activate" to generate some errors in your rails project...happy debugging..
+type _"activate"_ to generate some errors in your rails project...happy debugging..
 
-(to check yourself type "checkme" ** not working jet**)
+To check yourself type _"checkme"_ and get a status update
 
-sick of debugging type "fixme"
+Sick of debugging type _"fixme"_
 
 ## in Planing
- checkme executable to check on fixed error status and better feedback on debugging status
- increase in error complexity
+
+increase in error complexity and more status updates
+
 
 ## Contributing
 
