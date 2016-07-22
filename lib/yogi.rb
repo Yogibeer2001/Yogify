@@ -190,6 +190,9 @@ module Yogi
 
       file_sample.each do |file_name|
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
+
+
+
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
         post_counted_l = count_em(text,"l")
@@ -235,20 +238,20 @@ module Yogi
         post_diff_px = $pre_counted_px - post_counted_px
 
 
-        puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{$post_diff_comma}"
-        puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{$post_diff_semicolon}"
-        puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{$post_diff_l}"
-        puts  "pre_diff_3: #{$pre_diff_3} vs post_diff_3: #{$post_diff_3}"
-        puts  "pre_diff_s: #{$pre_diff_s} vs post_diff_s: #{$post_diff_s}"
-        puts  "pre_diff_bracket: #{$pre_diff_bracket} vs post_diff_bracket: #{$post_diff_bracket}"
-        puts  "pre_diff_px: #{$pre_diff_px} vs post_diff_px: #{$post_diff_px}"
-        puts  "pre_counted_comma: #{$pre_counted_comma} vs post_counted_comma: #{$post_counted_comma}"
-        puts  "pre_counted_semicolon: #{$pre_counted_semicolon} vs post_counted_semicolon: #{$post_counted_semicolon}"
-        puts  "pre_counted_l: #{$pre_counted_l} vs post_counted_l: #{$post_counted_l}"
-        puts  "pre_counted_3: #{$pre_counted_3} vs post_counted_3: #{$post_counted_3}"
-        puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{$post_counted_s}"
-        puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{$post_counted_bracket}"
-        puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{$post_counted_px}"
+        puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{post_diff_comma}"
+        puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{post_diff_semicolon}"
+        puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{post_diff_l}"
+        puts  "pre_diff_3: #{$pre_diff_3} vs post_diff_3: #{post_diff_3}"
+        puts  "pre_diff_s: #{$pre_diff_s} vs post_diff_s: #{post_diff_s}"
+        puts  "pre_diff_bracket: #{$pre_diff_bracket} vs post_diff_bracket: #{post_diff_bracket}"
+        puts  "pre_diff_px: #{$pre_diff_px} vs post_diff_px: #{post_diff_px}"
+        puts  "pre_counted_comma: #{$pre_counted_comma} vs post_counted_comma: #{post_counted_comma}"
+        puts  "pre_counted_semicolon: #{$pre_counted_semicolon} vs post_counted_semicolon: #{post_counted_semicolon}"
+        puts  "pre_counted_l: #{$pre_counted_l} vs post_counted_l: #{post_counted_l}"
+        puts  "pre_counted_3: #{$pre_counted_3} vs post_counted_3: #{post_counted_3}"
+        puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{post_counted_s}"
+        puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{post_counted_bracket}"
+        puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{post_counted_px}"
 
 
 
