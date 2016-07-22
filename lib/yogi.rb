@@ -198,20 +198,19 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
 
-        # puts "commas : #{post_counted_comma}"
-        # puts "semicolons : #{post_counted_semicolon}"
-        # puts "l : #{post_counted_l}"
-        # puts "3 : #{post_counted_3}"
-        # puts "s : #{post_counted_s}"
-        # puts "} : #{post_counted_bracket}"
-        # puts "px : #{post_counted_px}"
+        puts " post commas : #{post_counted_comma}"
+        puts "post semicolons : #{post_counted_semicolon}"
+        puts "post l : #{post_counted_l}"
+        puts "post 3 : #{post_counted_3}"
+        puts "post s : #{post_counted_s}"
+        puts "post } : #{post_counted_bracket}"
+        puts "post px : #{post_counted_px}"
 
 
 
         json_file = File.read(".ignoreme.json")
         variable_hash = JSON.parse(json_file)
 
-puts "test loop"
         $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
         $pre_counted_semicolon = variable_hash[i][file_name]['pre_counted_semicolon']
         $pre_counted_l = variable_hash[i][file_name]['pre_counted_l']
@@ -235,54 +234,72 @@ puts "test loop"
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
 
-        if $pre_diff_comma == 0
-          comma_fix = 100
-        else
-        comma_fix = (($pre_diff_comma - post_diff_comma)/$pre_diff_comma)*100
-        end
-        puts " #{comma_fix}% of comma errors fixed"
 
-        if $pre_diff_semicolon == 0
-           semicolon_fix = 100
-        else
-        semicolon_fix = (($pre_diff_semicolon - post_diff_semicolon)/$pre_diff_semicolon)*100
-        end
-        puts " #{semicolon_fix}% of comma errors fixed"
+        puts  "pre_diff_comma: #{$pre_diff_comma} vs post_diff_comma: #{$post_diff_comma}"
+        puts  "pre_diff_semicolon: #{$pre_diff_semicolon} vs post_diff_semicolon: #{$post_diff_semicolon}"
+        puts  "pre_diff_l: #{$pre_diff_l} vs post_diff_l: #{$post_diff_l}"
+        puts  "pre_diff_3: #{$pre_diff_3} vs post_diff_3: #{$post_diff_3}"
+        puts  "pre_diff_s: #{$pre_diff_s} vs post_diff_s: #{$post_diff_s}"
+        puts  "pre_diff_bracket: #{$pre_diff_bracket} vs post_diff_bracket: #{$post_diff_bracket}"
+        puts  "pre_diff_px: #{$pre_diff_px} vs post_diff_px: #{$post_diff_px}"
+        puts  "pre_counted_comma: #{$pre_counted_comma} vs post_counted_comma: #{$post_counted_comma}"
+        puts  "pre_counted_semicolon: #{$pre_counted_semicolon} vs post_counted_semicolon: #{$post_counted_semicolon}"
+        puts  "pre_counted_l: #{$pre_counted_l} vs post_counted_l: #{$post_counted_l}"
+        puts  "pre_counted_3: #{$pre_counted_3} vs post_counted_3: #{$post_counted_3}"
+        puts  "pre_counted_s: #{$pre_counted_s} vs post_counted_s: #{$post_counted_s}"
+        puts  "pre_counted_bracket: #{$pre_counted_bracket} vs post_counted_bracket: #{$post_counted_bracket}"
+        puts  "pre_counted_px: #{$pre_counted_px} vs post_counted_px: #{$post_counted_px}"
 
-        if $pre_diff_l == 0
-           l_fix = 100
-        else
-        l_fix = (($pre_diff_l - post_diff_l)/$pre_diff_l)*100
-        end
-        puts " #{l_fix}% of comma errors fixed"
 
-        if $pre_diff_3 == 0
-           three_fix = 100
-        else
-        three_fix = (($pre_diff_3 - post_diff_3)/$pre_diff_3)*100
-        end
-        puts " #{three_fix}% of comma errors fixed"
 
-        if $pre_diff_s == 0
-           s_fix = 100
-        else
-        s_fix = (($pre_diff_s - post_diff_s)/$pre_diff_s)*100
-        end
-        puts " #{s_fix}% of comma errors fixed"
-
-        if $pre_diff_bracket == 0
-           bracket_fix = 100
-        else
-        bracket_fix = (($pre_diff_bracket - post_diff_bracket)/$pre_diff_bracket)*100
-        end
-        puts " #{bracket_fix}% of comma errors fixed"
-
-        if $pre_diff_px == 0
-           px_fix = 100
-        else
-        px_fix = (($pre_diff_px - post_diff_px)/$pre_diff_px)*100
-        end
-        puts " #{px_fix}% of comma errors fixed"
+      #   if $pre_diff_comma == 0
+      #     comma_fix = 100
+      #   else
+      #   comma_fix = (($pre_diff_comma - post_diff_comma)/$pre_diff_comma)*100
+      #   end
+      #   puts " #{comma_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_semicolon == 0
+      #      semicolon_fix = 100
+      #   else
+      #   semicolon_fix = (($pre_diff_semicolon - post_diff_semicolon)/$pre_diff_semicolon)*100
+      #   end
+      #   puts " #{semicolon_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_l == 0
+      #      l_fix = 100
+      #   else
+      #   l_fix = (($pre_diff_l - post_diff_l)/$pre_diff_l)*100
+      #   end
+      #   puts " #{l_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_3 == 0
+      #      three_fix = 100
+      #   else
+      #   three_fix = (($pre_diff_3 - post_diff_3)/$pre_diff_3)*100
+      #   end
+      #   puts " #{three_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_s == 0
+      #      s_fix = 100
+      #   else
+      #   s_fix = (($pre_diff_s - post_diff_s)/$pre_diff_s)*100
+      #   end
+      #   puts " #{s_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_bracket == 0
+      #      bracket_fix = 100
+      #   else
+      #   bracket_fix = (($pre_diff_bracket - post_diff_bracket)/$pre_diff_bracket)*100
+      #   end
+      #   puts " #{bracket_fix}% of comma errors fixed"
+      #
+      #   if $pre_diff_px == 0
+      #      px_fix = 100
+      #   else
+      #   px_fix = (($pre_diff_px - post_diff_px)/$pre_diff_px)*100
+      #   end
+      #   puts " #{px_fix}% of comma errors fixed"
       end
     end
   end
