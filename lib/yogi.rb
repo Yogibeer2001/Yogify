@@ -243,6 +243,9 @@ module Yogi
 
 
         puts '--------------------------------------------------------------------'
+        puts "#{file_name}"
+        puts " total_pre_diff: #{total_pre_diff}"
+        puts " total_post_diff: #{total_post_diff}"
         puts "post commas : #{post_counted_comma}"
         puts "post semicolons : #{post_counted_semicolon}"
         puts "post l : #{post_counted_l}"
@@ -316,8 +319,16 @@ module Yogi
       #   end
       #   puts " #{px_fix}% of comma errors fixed"
       end
+      puts " pre_diff_array: #{pre_diff_array}"
+      puts " post_diff_array: #{post_diff_array}"
+
+
+
       pre_diff = pre_diff_array.inject(0, :+)
+      puts "total of pre_diff #{pre_diff}"
       post_diff = post_diff_array.inject(0, :+)
+      puts "total of post_diff #{post_diff}"
+
       if pre_diff == 0
         puts 'there must have gone something wrong...no errors to begin with'
       else
