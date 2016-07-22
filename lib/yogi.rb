@@ -328,11 +328,15 @@ module Yogi
       puts "total of pre_diff #{pre_diff}"
       post_diff = post_diff_array.inject(0, :+)
       puts "total of post_diff #{post_diff}"
+      pre_diff = pre_diff.to_f
+      post_diff = post_diff.to_f
+
 
       if pre_diff == 0
         puts 'there must have gone something wrong...no errors to begin with'
       else
       fix = ((pre_diff - post_diff)/pre_diff)*100
+      fix = fix.round(3)
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
       puts "================================="
