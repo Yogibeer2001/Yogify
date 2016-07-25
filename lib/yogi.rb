@@ -90,8 +90,8 @@ module Yogi
         new_contents2 = new_contents1.gsub(","){rand(2).zero? ? "," : " "}
         new_contents3 = new_contents2.gsub("l"){rand(2).zero? ? "l" : "1"}
         new_contents4 = new_contents3.gsub("3"){rand(2).zero? ? "3" : "E"}
-        new_contents5 = new_contents4.gsub("s"){rand(2).zero? ? "s" : "5"}
-        new_contents6 = new_contents5.gsub("}"){rand(2).zero? ? "}" : "]"}
+        new_contents5 = new_contents4.gsub(/[s]$/){rand(2).zero? ? " " : "5"}
+        new_contents6 = new_contents5.gsub("}"){rand(2).zero? ? "}" : ")"}
         new_contents7 = new_contents6.gsub("px"){rand(2).zero? ? "px" : "xp"}
 
         # puts new_contents6

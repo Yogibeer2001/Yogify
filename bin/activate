@@ -2,6 +2,7 @@
 
 require 'Yogi'
 
+
 setup = Yogi::Setup.new
 setup.setup
 errorInside = Yogi::ErrorInside.new
