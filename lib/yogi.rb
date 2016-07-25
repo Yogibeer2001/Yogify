@@ -11,7 +11,7 @@ module Yogi
       $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
       $sample_size = 5
       $file_sample = $file_names.sample($sample_size)
-      File.open('/.git/.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
+      File.open('.git/.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
     end
   end
 
