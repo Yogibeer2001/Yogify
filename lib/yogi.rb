@@ -22,6 +22,7 @@ module Yogi
   $pre_counted_s = 0
   $pre_counted_bracket = 0
   $pre_counted_px = 0
+  $pre_counted_sq_bracket = 0
 
   $pre_diff_comma = 0
   $pre_diff_semicolon = 0
@@ -30,6 +31,7 @@ module Yogi
   $pre_diff_s = 0
   $pre_diff_bracket = 0
   $pre_diff_px = 0
+  $pre_diff_sq_bracket = 0
 
   class ErrorInside
 
@@ -72,6 +74,7 @@ module Yogi
         $pre_counted_s = count_em(text,"s")
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
+        $pre_counted_sq_bracket = count_em(text,">")
 
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
@@ -93,11 +96,12 @@ module Yogi
         new_contents5 = new_contents4.gsub(/[s]$/){rand(2).zero? ? " " : "5"}
         new_contents6 = new_contents5.gsub("}"){rand(2).zero? ? "}" : ")"}
         new_contents7 = new_contents6.gsub("px"){rand(2).zero? ? "px" : "xp"}
+        new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : "."}
 
         # puts new_contents6
 
         # To write changes to the file, use:
-        File.open(file_name, "w") {|file| file.puts new_contents7 }
+        File.open(file_name, "w") {|file| file.puts new_contents8 }
 
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts text
@@ -109,6 +113,8 @@ module Yogi
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
+        post_counted_px = count_em(text,">")
+        post_counted_sq_bracket = count_em(text,">")
 
         # puts "commas : #{post_counted_comma}"
         # puts "semicolons : #{post_counted_semicolon}"
@@ -128,6 +134,7 @@ module Yogi
         $pre_diff_s = $pre_counted_s - post_counted_s
         $pre_diff_bracket = $pre_counted_bracket - post_counted_bracket
         $pre_diff_px = $pre_counted_px - post_counted_px
+        $pre_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
 
         pre_count_hash = {file_name => {
           "pre_counted_comma": $pre_counted_comma,
@@ -137,13 +144,15 @@ module Yogi
           "pre_counted_s": $pre_counted_s,
           "pre_counted_bracket": $pre_counted_bracket,
           "pre_counted_px": $pre_counted_px,
+          "pre_counted_sq_bracket": $pre_counted_sq_bracket,
           "pre_diff_comma": $pre_diff_comma,
           "pre_diff_semicolon": $pre_diff_semicolon,
           "pre_diff_l": $pre_diff_l,
           "pre_diff_3": $pre_diff_3,
           "pre_diff_s": $pre_diff_s,
           "pre_diff_bracket": $pre_diff_bracket,
-          "pre_diff_px": $pre_diff_px
+          "pre_diff_px": $pre_diff_px,
+          "pre_diff_sq_bracket": $pre_diff_sq_bracket
         }}
           count_hash << pre_count_hash
 
@@ -192,6 +201,7 @@ module Yogi
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
+        post_counted_sq_bracket = count_em(text,">")
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
@@ -203,6 +213,7 @@ module Yogi
         $pre_counted_s = variable_hash[i][file_name]['pre_counted_s']
         $pre_counted_bracket = variable_hash[i][file_name]['pre_counted_bracket']
         $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
+        $pre_counted_sq_bracket = variable_hash[i][file_name]['pre_counted_sq_bracket']
         $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
         $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
         $pre_diff_l = variable_hash[i][file_name]['pre_diff_l']
@@ -210,6 +221,7 @@ module Yogi
         $pre_diff_s = variable_hash[i][file_name]['pre_diff_s']
         $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
         $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
+        $pre_diff_sq_bracket = variable_hash[i][file_name]['pre_diff_sq_bracket']
         i += 1
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -218,12 +230,13 @@ module Yogi
         post_diff_s = $pre_counted_s - post_counted_s
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
+        post_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
 
         # total changes made in each file
-        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px
+        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket
 
         # total changes not fixed
-        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px
+        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket
 
         pre_diff_array << total_pre_diff
         post_diff_array << total_post_diff

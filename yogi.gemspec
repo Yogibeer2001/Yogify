@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   type "activate" to start the exercise, happy ...debugging your project
   type "checkme" for an update on your debugging progress, or if your are sick of it just type "fixme" to fix the errors}
   spec.summary       = %q{practice debugging skills}
-  spec.homepage      = "http://github.io/Yogibeer2001/Yogify"
+  spec.homepage      = "https://github.com/Yogibeer2001/Yogify"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
