@@ -11,7 +11,7 @@ module Yogi
       $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
       $sample_size = 5
       $file_sample = $file_names.sample($sample_size)
-      File.open('.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
+      File.open('/.git/.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
     end
   end
 
@@ -39,11 +39,11 @@ module Yogi
 
     # creating backup directory
     def backup
-        FileUtils.mkdir_p '.backupFiles' unless File.exists?('.backupFiles')
+        FileUtils.mkdir_p '.git/.backupFiles' unless File.exists?('.git/.backupFiles')
         # puts "created folder backupFiles"
 
         #copy backup to backup folder
-        FileUtils.cp_r "./app", ".backupFiles/"
+        FileUtils.cp_r "./app", ".git/.backupFiles/"
         # puts "copied files to backupFiles #{$file_names}"
 
         # #rename files in backupFiles folder
@@ -57,7 +57,7 @@ module Yogi
 
     def yogify
       count_hash = []
-      buffer = File.open('.ignoremefile.txt', 'r').read
+      buffer = File.open('.git/.ignoremefile.txt', 'r').read
       file_sample = JSON.parse(buffer)
       # puts file_sample.class
       # puts file_sample
@@ -160,7 +160,7 @@ module Yogi
         # # counter_test = variable_hash[file_name]
         # puts "pre_counted_l schould be : #{variable_hash}"
       end
-      File.open('.ignoreme.json', "a") {|file| file.write count_hash.to_json}
+      File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
       puts "You can start your debugging..."
       puts "if your are sick of it, just type...'fixme'"
     end
@@ -176,7 +176,7 @@ module Yogi
       i = 0
       pre_diff_array = []
       post_diff_array = []
-      buffer = File.open('.ignoremefile.txt', 'r').read
+      buffer = File.open('.git/.ignoremefile.txt', 'r').read
       file_sample = JSON.parse(buffer)
       # puts file_sample.class
       # puts file_sample
@@ -193,7 +193,7 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
 
-        json_file = File.read(".ignoreme.json")
+        json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
 
         $pre_counted_comma = variable_hash[i][file_name]['pre_counted_comma']
@@ -333,15 +333,15 @@ module Yogi
   class ErrorOut
     def undo
       #undo changes originaly made.
-      Dir.foreach('.backupFiles') do |item|
+      Dir.foreach('.git/.backupFiles') do |item|
         next if item == '.' or item == '..'
-      FileUtils.cp_r ".backupFiles/"+ item, "./"
+      FileUtils.cp_r ".git/.backupFiles/"+ item, "./"
       # puts item
         end
       #removes folder backupFiles
-      FileUtils.rm_r '.backupFiles'
-      FileUtils.rm_r '.ignoreme.json'
-      FileUtils.rm_r '.ignoremefile.txt'
+      FileUtils.rm_r '.git/.backupFiles'
+      FileUtils.rm_r '.git/.ignoreme.json'
+      FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
     end
   end
