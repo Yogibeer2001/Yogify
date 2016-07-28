@@ -10,9 +10,8 @@ if File.exists?(".git/.ignoremefile.txt")
   #   # exec cmd
     cmd = ("say 'You fool can not activate me twice'")
     system cmd
-  else
-    puts 'You fool can not activate me twice'
   end
+  puts 'You fool can not activate me twice'
 else
   # puts "You cant fool me..."
   setup = Yogi::Setup.new

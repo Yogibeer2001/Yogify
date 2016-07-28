@@ -11,7 +11,7 @@ module Yogi
     def setup
       $file_names = []
       $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html") + Dir.glob("config/routes.rb")
-      $sample_size = 5
+      $sample_size = 7
       $file_sample = $file_names.sample($sample_size)
       File.open('.git/.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
     end
@@ -25,6 +25,7 @@ module Yogi
   $pre_counted_bracket = 0
   $pre_counted_px = 0
   $pre_counted_sq_bracket = 0
+  $pre_counted_equal = 0
 
   $pre_diff_comma = 0
   $pre_diff_semicolon = 0
@@ -34,6 +35,7 @@ module Yogi
   $pre_diff_bracket = 0
   $pre_diff_px = 0
   $pre_diff_sq_bracket = 0
+  $pre_diff_equal = 0
 
   class ErrorInside
 
@@ -78,6 +80,7 @@ module Yogi
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
         $pre_counted_sq_bracket = count_em(text,">")
+        $pre_counted_equal = count_em(text,"==")
 
         # puts "commas : #{$pre_counted_comma}"
         # puts "semicolons : #{$pre_counted_semicolon}"
@@ -100,6 +103,7 @@ module Yogi
         new_contents6 = new_contents5.gsub("}"){rand(2).zero? ? "}" : ")"}
         new_contents7 = new_contents6.gsub("px"){rand(2).zero? ? "px" : "xp"}
         new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : "."}
+        new_contents9 = new_contents8.gsub("=="){rand(2).zero? ? "==" : "="}
 
         # puts new_contents6
 
@@ -116,8 +120,8 @@ module Yogi
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
-        post_counted_px = count_em(text,">")
         post_counted_sq_bracket = count_em(text,">")
+        post_counted_equal = count_em(text,"==")
 
         # puts "commas : #{post_counted_comma}"
         # puts "semicolons : #{post_counted_semicolon}"
@@ -138,6 +142,7 @@ module Yogi
         $pre_diff_bracket = $pre_counted_bracket - post_counted_bracket
         $pre_diff_px = $pre_counted_px - post_counted_px
         $pre_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
+        $pre_diff_equal = $pre_counted_equal - post_counted_equal
 
         pre_count_hash = {file_name => {
           "pre_counted_comma": $pre_counted_comma,
@@ -156,6 +161,7 @@ module Yogi
           "pre_diff_bracket": $pre_diff_bracket,
           "pre_diff_px": $pre_diff_px,
           "pre_diff_sq_bracket": $pre_diff_sq_bracket
+          "pre_diff_equal": $pre_diff_equal
         }}
           count_hash << pre_count_hash
 
@@ -218,6 +224,7 @@ module Yogi
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
+        post_counted_equal = count_em(text,"==")
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
@@ -230,6 +237,8 @@ module Yogi
         $pre_counted_bracket = variable_hash[i][file_name]['pre_counted_bracket']
         $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
         $pre_counted_sq_bracket = variable_hash[i][file_name]['pre_counted_sq_bracket']
+        $pre_counted_equal = variable_hash[i][file_name]['pre_counted_equal']
+
         $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
         $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
         $pre_diff_l = variable_hash[i][file_name]['pre_diff_l']
@@ -238,6 +247,7 @@ module Yogi
         $pre_diff_bracket = variable_hash[i][file_name]['pre_diff_bracket']
         $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
         $pre_diff_sq_bracket = variable_hash[i][file_name]['pre_diff_sq_bracket']
+        $pre_diff_equal = variable_hash[i][file_name]['pre_diff_equal']
         i += 1
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -246,13 +256,14 @@ module Yogi
         post_diff_s = $pre_counted_s - post_counted_s
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
-        post_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
+        post_diff_equal = $pre_counted_equal - post_counted_equal
+        post_diff_equal = $pre_counted_equal - post_counted_equal
 
         # total changes made in each file
-        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket
+        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket + $pre_diff_equal
 
         # total changes not fixed
-        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket
+        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket + post_diff_equal
 
         pre_diff_array << total_pre_diff
         post_diff_array << total_post_diff
@@ -349,14 +360,14 @@ module Yogi
       if pre_diff == 0
         puts 'there must have gone something wrong...no errors to begin with'
       else
-      fix = ((pre_diff - post_diff)/pre_diff)*100
+      fixed_errors = pre_diff - post_diff
+      fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
+      puts " You fixed #{fixed_errors} errors, #{post_diff} more to go."
       puts "================================="
         if  OS.mac?
-          # cmd = ("say 'You are a Legend!'")
-          # exec cmd
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
@@ -386,8 +397,6 @@ module Yogi
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         system cmd
-        # cmd = ("say 'Debugging mode deactivated'")
-        # exec cmd
       end
     end
   end
