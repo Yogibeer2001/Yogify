@@ -160,7 +160,7 @@ module Yogi
           "pre_diff_s": $pre_diff_s,
           "pre_diff_bracket": $pre_diff_bracket,
           "pre_diff_px": $pre_diff_px,
-          "pre_diff_sq_bracket": $pre_diff_sq_bracket
+          "pre_diff_sq_bracket": $pre_diff_sq_bracket,
           "pre_diff_equal": $pre_diff_equal
         }}
           count_hash << pre_count_hash
