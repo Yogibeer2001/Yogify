@@ -179,6 +179,7 @@ module Yogi
         file = File.join(__dir__, 'sound', 'activated.wav')
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
+        system cmd
 
 
       # cmd = ("say 'Debugging mode activated'")
