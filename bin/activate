@@ -1,11 +1,20 @@
 #!/usr/bin/env ruby
 
 require 'Yogi'
+require 'os'
 
 
-
+if File.exists?(".git/.ignoremefile.txt")
 setup = Yogi::Setup.new
 setup.setup
 errorInside = Yogi::ErrorInside.new
 errorInside.backup
 errorInside.yogify
+else
+  if OS.mac?
+    cmd "say 'You fool can not activate me twice'"
+  else
+    puts "You cant fool me..."
+  end
+  puts 'You fool can not activate me twice'
+end

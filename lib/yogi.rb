@@ -3,13 +3,14 @@ require "yogi/version"
 require 'fileutils'
 require 'json'
 require 'os'
+require 'shellwords'
 
 module Yogi
 
   class Setup
     def setup
       $file_names = []
-      $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html")
+      $file_names = Dir.glob("app/**/*.rb") + Dir.glob("app/**/*.js") + Dir.glob("app/**/*.css") + Dir.glob("app/**/*.scss") + Dir.glob("app/**/*.erb") + Dir.glob("app/**/*.html") + Dir.glob("config/routes.rb")
       $sample_size = 5
       $file_sample = $file_names.sample($sample_size)
       File.open('.git/.ignoremefile.txt', "a") {|file| file.puts $file_sample.to_json}
@@ -47,6 +48,7 @@ module Yogi
 
         #copy backup to backup folder
         FileUtils.cp_r "./app", ".git/.backupFiles/"
+        FileUtils.cp_r "./config", ".git/.backupFiles/"
         # puts "copied files to backupFiles #{$file_names}"
 
         # #rename files in backupFiles folder
@@ -174,10 +176,15 @@ module Yogi
       puts "You can start your debugging..."
       puts "if your are sick of it, just type...'fixme'"
       if OS.mac?
+        file = File.join(__dir__, 'sound', 'activated.wav')
+        escfile = Shellwords.escape(file)
+        cmd = "afplay #{escfile}"
+
+
       # cmd = ("say 'Debugging mode activated'")
       # exec cmd
-      cmd = ("afplay 'sound/activated.wav'")
-      exec cmd
+      # cmd = ("afplay 'sound/activated.wav'")
+      # exec cmd
 
       end
     end
@@ -372,6 +379,7 @@ module Yogi
       FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
       if OS.mac?
+
         # cmd = ("say 'Debugging mode deactivated'")
         # exec cmd
         cmd = ("afplay 'sound/Giving-up.wav'")
