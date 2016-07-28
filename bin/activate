@@ -11,7 +11,7 @@ errorInside = Yogi::ErrorInside.new
 errorInside.backup
 errorInside.yogify
 else
-  # if OS.mac?
+  if OS.mac?
   #   # cmd = ("say 'Debugging mode activated'")
   #   # exec cmd
   #
