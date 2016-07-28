@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'Yogi'
+puts 'hello world'
 
 errorOut = Yogi::ErrorOut.new
 errorOut.undo
