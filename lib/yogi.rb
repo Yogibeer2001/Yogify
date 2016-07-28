@@ -357,8 +357,10 @@ module Yogi
         if  OS.mac?
           # cmd = ("say 'You are a Legend!'")
           # exec cmd
-          cmd = ("afplay 'sound/oh-yeah.wav'")
-          exec cmd
+          file = File.join(__dir__, 'sound', 'oh-yeah.wav')
+          escfile = Shellwords.escape(file)
+          cmd = "afplay #{escfile}"
+          system cmd
 
         end
       end
@@ -380,12 +382,12 @@ module Yogi
       FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
       if OS.mac?
-
+        file = File.join(__dir__, 'sound', 'Giving-up.wav')
+        escfile = Shellwords.escape(file)
+        cmd = "afplay #{escfile}"
+        system cmd
         # cmd = ("say 'Debugging mode deactivated'")
         # exec cmd
-        cmd = ("afplay 'sound/Giving-up.wav'")
-        exec cmd
-
       end
     end
   end

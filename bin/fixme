@@ -7,5 +7,9 @@ if File.exists?(".git/.ignoremefile.txt")
 errorOut = Yogi::ErrorOut.new
 errorOut.undo
 else
+  if OS.mac?
+      cmd = ("say 'You fool should activate me before you can fix me'")
+      system cmd
+  end
   puts "nothing to fix here"
 end
