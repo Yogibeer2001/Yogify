@@ -10,13 +10,11 @@ setup.setup
 errorInside = Yogi::ErrorInside.new
 errorInside.backup
 errorInside.yogify
-else
-  if OS.mac?
+elsif OS.mac?
   #   # cmd = ("say 'Debugging mode activated'")
   #   # exec cmd
-  #
     cmd = ("say 'You fool can not activate me twice'")
-    exec cmd
+    system cmd
   else
     puts "You cant fool me..."
   end
