@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'Yogi'
-puts 'hello world'
+# puts 'hello world'
 
+if File.exists?(".git/.ignoremefile.txt")
 errorOut = Yogi::ErrorOut.new
 errorOut.undo
+else
+  puts "nothing to fix here"
+end

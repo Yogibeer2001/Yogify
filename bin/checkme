@@ -2,5 +2,9 @@
 
 require 'Yogi'
 
+if File.exists?(".git/.ignoremefile.txt")
 errorCheck = Yogi::CheckErrors.new
 errorCheck.checker
+else
+  puts 'You should first activate the gem before you can check your progress'
+end
