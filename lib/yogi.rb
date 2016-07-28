@@ -256,7 +256,7 @@ module Yogi
         post_diff_s = $pre_counted_s - post_counted_s
         post_diff_bracket = $pre_counted_bracket - post_counted_bracket
         post_diff_px = $pre_counted_px - post_counted_px
-        post_diff_equal = $pre_counted_equal - post_counted_equal
+        post_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket  
         post_diff_equal = $pre_counted_equal - post_counted_equal
 
         # total changes made in each file
