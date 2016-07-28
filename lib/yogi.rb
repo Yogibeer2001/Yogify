@@ -2,6 +2,7 @@ require 'rubygems'
 require "yogi/version"
 require 'fileutils'
 require 'json'
+require 'os'
 
 module Yogi
 
@@ -172,8 +173,13 @@ module Yogi
       File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
       puts "You can start your debugging..."
       puts "if your are sick of it, just type...'fixme'"
-      cmd = ("say 'Debugging mode activated'")
+      if OS.mac?
+      # cmd = ("say 'Debugging mode activated'")
+      # exec cmd
+      cmd = ("afplay 'sound/activated.wav'")
       exec cmd
+
+      end
     end
   end
 
@@ -340,8 +346,13 @@ module Yogi
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
       puts "================================="
-      cmd = ("say 'You are a legend!'")
-      exec cmd
+        if  OS.mac?
+          # cmd = ("say 'You are a Legend!'")
+          # exec cmd
+          cmd = ("afplay 'sound/oh-yeah.wav'")
+          exec cmd
+
+        end
       end
     end
   end
@@ -360,8 +371,13 @@ module Yogi
       FileUtils.rm_r '.git/.ignoreme.json'
       FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
-      cmd = ("say 'Debugging mode deactivated'")
-      exec cmd
+      if OS.mac?
+        # cmd = ("say 'Debugging mode deactivated'")
+        # exec cmd
+        cmd = ("afplay 'sound/Giving-up.wav'")
+        exec cmd
+
+      end
     end
   end
 
