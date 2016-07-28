@@ -176,7 +176,7 @@ module Yogi
       puts "You can start your debugging..."
       puts "if your are sick of it, just type...'fixme'"
       if OS.mac?
-        file = File.join(__dir__, 'sound', 'activated.wav')
+        file = File.join(__dir__, 'sound', 'activated.mp3')
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         system cmd
@@ -357,7 +357,7 @@ module Yogi
         if  OS.mac?
           # cmd = ("say 'You are a Legend!'")
           # exec cmd
-          file = File.join(__dir__, 'sound', 'oh-yeah.wav')
+          file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
           system cmd
@@ -382,7 +382,7 @@ module Yogi
       FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
       if OS.mac?
-        file = File.join(__dir__, 'sound', 'Giving-up.wav')
+        file = File.join(__dir__, 'sound', 'Giving-up.mp3')
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         system cmd
