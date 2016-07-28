@@ -172,6 +172,8 @@ module Yogi
       File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
       puts "You can start your debugging..."
       puts "if your are sick of it, just type...'fixme'"
+      cmd = ("say 'Debugging mode activated'")
+      exec cmd
     end
   end
 
@@ -338,6 +340,8 @@ module Yogi
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
       puts "================================="
+      cmd = ("say 'You are a legend!'")
+      exec cmd
       end
     end
   end
@@ -356,6 +360,8 @@ module Yogi
       FileUtils.rm_r '.git/.ignoreme.json'
       FileUtils.rm_r '.git/.ignoremefile.txt'
       puts " Hope You had fun and try it again later."
+      cmd = ("say 'Debugging mode deactivated'")
+      exec cmd
     end
   end
 
