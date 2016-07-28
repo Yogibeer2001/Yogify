@@ -3,7 +3,7 @@
 require 'Yogi'
 # puts 'hello world'
 
-if File.exists?(".git/.ignoremefile.txt")
+if File.exists?(".git/.backupFiles")
 errorOut = Yogi::ErrorOut.new
 errorOut.undo
 else

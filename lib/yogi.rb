@@ -108,7 +108,7 @@ module Yogi
         # puts new_contents6
 
         # To write changes to the file, use:
-        File.open(file_name, "w") {|file| file.puts new_contents8 }
+        File.open(file_name, "w") {|file| file.puts new_contents9 }
 
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         # puts text
@@ -366,7 +366,7 @@ module Yogi
       fix = fix.round(3)
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
-      puts " You fixed #{fixed_errors} errors, #{post_diff} more to go."
+      puts " You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
