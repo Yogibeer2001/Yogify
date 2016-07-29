@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'Yogi'
+require 'os'
 
 if File.exists?(".git/.ignoremefile.txt")
   errorCheck = Yogi::CheckErrors.new

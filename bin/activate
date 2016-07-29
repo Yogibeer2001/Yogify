@@ -1,23 +1,17 @@
 #!/usr/bin/env ruby
-
 require 'Yogi'
 require 'os'
 
-
 if File.exists?(".git/.ignoremefile.txt")
   if OS.mac?
-  #   # cmd = ("say 'Debugging mode activated'")
-  #   # exec cmd
     cmd = ("say 'You fool can not activate me twice'")
     system cmd
   end
   puts 'You fool can not activate me twice'
 else
-  # puts "You cant fool me..."
   setup = Yogi::Setup.new
   setup.setup
   errorInside = Yogi::ErrorInside.new
   errorInside.backup
   errorInside.yogify
-
 end

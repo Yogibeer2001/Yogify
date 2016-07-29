@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'Yogi'
-# puts 'hello world'
+require 'os'
 
 if File.exists?(".git/.backupFiles")
 errorOut = Yogi::ErrorOut.new

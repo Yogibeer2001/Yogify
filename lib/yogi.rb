@@ -137,11 +137,11 @@ module Yogi
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         system cmd
-      elsif OS.linux?
-        file = File.join(__dir__, 'sound', 'activated.mp3')
-        escfile = Shellwords.escape(file)
-        cmd = "aplay #{escfile}"
-        system cmd
+      # elsif OS.linux?
+      #   file = File.join(__dir__, 'sound', 'activated.mp3')
+      #   escfile = Shellwords.escape(file)
+      #   cmd = "aplay #{escfile}"
+      #   system cmd
       end
     end
   end
@@ -236,11 +236,11 @@ module Yogi
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
           system cmd
-        elsif  OS.linux?
-          file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
-          escfile = Shellwords.escape(file)
-          cmd = "aplay #{escfile}"
-          system cmd
+        # elsif  OS.linux?
+        #   file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
+        #   escfile = Shellwords.escape(file)
+        #   cmd = "aplay #{escfile}"
+        #   system cmd
         end
       end
     end
@@ -265,11 +265,11 @@ module Yogi
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         system cmd
-      elsif OS.linux?
-        file = File.join(__dir__, 'sound', 'Giving-up.mp3')
-        escfile = Shellwords.escape(file)
-        cmd = "aplay #{escfile}"
-        system cmd
+      # elsif OS.linux?
+      #   file = File.join(__dir__, 'sound', 'Giving-up.mp3')
+      #   escfile = Shellwords.escape(file)
+      #   cmd = "aplay #{escfile}"
+      #   system cmd
       end
     end
   end
