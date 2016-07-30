@@ -72,7 +72,7 @@ module Yogi
         $pre_counted_px = count_em(text,"px")
         $pre_counted_sq_bracket = count_em(text,">")
         $pre_counted_equal = count_em(text,"==")
-        $pre_counted_sdot = count_em(text,"s.")
+        $pre_counted_sdot = count_em(text,"s\.")
 
         # To merely print the contents of the file, use:
         new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ":"}
@@ -84,7 +84,7 @@ module Yogi
         new_contents7 = new_contents6.gsub("px"){rand(2).zero? ? "px" : "xp"}
         new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : ">"}
         new_contents9 = new_contents8.gsub("=="){rand(2).zero? ? "==" : "="}
-        new_contents10 = new_contents9.gsub("s."){rand(2).zero? ? ".s" : "."}
+        new_contents10 = new_contents9.gsub(/s\./){rand(2).zero? ? ".s" : "."}
 
         # To write changes to the file, use:
         File.open(file_name, "w") {|file| file.puts new_contents10 }
@@ -100,7 +100,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
-        post_counted_sdot = count_em(text,"s.")
+        post_counted_sdot = count_em(text,/s\./)
 
         $pre_diff_comma = $pre_counted_comma - post_counted_comma
         $pre_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -180,7 +180,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
-        post_counted_sdot = count_em(text,"s.")
+        post_counted_sdot = count_em(text,/s\./)
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
