@@ -87,7 +87,7 @@ module Yogi
         new_contents10 = new_contents9.gsub("s."){rand(2).zero? ? ".s" : "."}
 
         # To write changes to the file, use:
-        File.open(file_name, "w") {|file| file.puts new_contents9 }
+        File.open(file_name, "w") {|file| file.puts new_contents10 }
 
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         #counts ocurences in the file after initial change
@@ -100,7 +100,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
-        post_counted_equal = count_em(text,"s.")
+        post_counted_sdot = count_em(text,"s.")
 
         $pre_diff_comma = $pre_counted_comma - post_counted_comma
         $pre_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
