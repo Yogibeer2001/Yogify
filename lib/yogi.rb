@@ -72,7 +72,7 @@ module Yogi
         $pre_counted_px = count_em(text,"px")
         $pre_counted_sq_bracket = count_em(text,">")
         $pre_counted_equal = count_em(text,"==")
-        $pre_counted_sdot = count_em(text,"s\.")
+        $pre_counted_sdot = count_em(text,/s\./)
 
         # To merely print the contents of the file, use:
         new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ":"}
