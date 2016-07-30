@@ -16,6 +16,7 @@ module Yogi
   $pre_counted_px = 0
   $pre_counted_sq_bracket = 0
   $pre_counted_equal = 0
+  $pre_counted_sdot = 0
 
   $pre_diff_comma = 0
   $pre_diff_semicolon = 0
@@ -26,6 +27,7 @@ module Yogi
   $pre_diff_px = 0
   $pre_diff_sq_bracket = 0
   $pre_diff_equal = 0
+  $pre_diff_sdot = 0
 
 
   class Setup
@@ -63,24 +65,26 @@ module Yogi
 
         $pre_counted_comma = count_em(text,",")
         $pre_counted_semicolon = count_em(text,";")
-        $pre_counted_l = count_em(text,"l")
+        $pre_counted_l = count_em(text,"ll")
         $pre_counted_3 = count_em(text,"3")
         $pre_counted_s = count_em(text,"s")
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
         $pre_counted_sq_bracket = count_em(text,">")
         $pre_counted_equal = count_em(text,"==")
+        $pre_counted_sdot = count_em(text,"s.")
 
         # To merely print the contents of the file, use:
         new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ":"}
         new_contents2 = new_contents1.gsub(","){rand(2).zero? ? "," : " "}
-        new_contents3 = new_contents2.gsub("l"){rand(2).zero? ? "l" : "1"}
+        new_contents3 = new_contents2.gsub("ll"){rand(2).zero? ? "ll" : "l1"}
         new_contents4 = new_contents3.gsub("3"){rand(2).zero? ? "3" : "E"}
         new_contents5 = new_contents4.gsub(/[s]$/){rand(2).zero? ? " " : "5"}
         new_contents6 = new_contents5.gsub("}"){rand(2).zero? ? "}" : ")"}
         new_contents7 = new_contents6.gsub("px"){rand(2).zero? ? "px" : "xp"}
-        new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : "."}
+        new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : ">"}
         new_contents9 = new_contents8.gsub("=="){rand(2).zero? ? "==" : "="}
+        new_contents10 = new_contents9.gsub("s."){rand(2).zero? ? ".s" : "."}
 
         # To write changes to the file, use:
         File.open(file_name, "w") {|file| file.puts new_contents9 }
@@ -89,13 +93,14 @@ module Yogi
         #counts ocurences in the file after initial change
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
-        post_counted_l = count_em(text,"l")
+        post_counted_l = count_em(text,"ll")
         post_counted_3 = count_em(text,"3")
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
+        post_counted_equal = count_em(text,"s.")
 
         $pre_diff_comma = $pre_counted_comma - post_counted_comma
         $pre_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -106,6 +111,7 @@ module Yogi
         $pre_diff_px = $pre_counted_px - post_counted_px
         $pre_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
         $pre_diff_equal = $pre_counted_equal - post_counted_equal
+        $pre_diff_sdot = $pre_counted_sdot - post_counted_sdot
 
         pre_count_hash = {file_name => {
           "pre_counted_comma": $pre_counted_comma,
@@ -117,6 +123,7 @@ module Yogi
           "pre_counted_px": $pre_counted_px,
           "pre_counted_sq_bracket": $pre_counted_sq_bracket,
           "pre_counted_equal": $pre_counted_equal,
+          "pre_counted_sdot": $pre_counted_sdot,
           "pre_diff_comma": $pre_diff_comma,
           "pre_diff_semicolon": $pre_diff_semicolon,
           "pre_diff_l": $pre_diff_l,
@@ -125,7 +132,8 @@ module Yogi
           "pre_diff_bracket": $pre_diff_bracket,
           "pre_diff_px": $pre_diff_px,
           "pre_diff_sq_bracket": $pre_diff_sq_bracket,
-          "pre_diff_equal": $pre_diff_equal
+          "pre_diff_equal": $pre_diff_equal,
+          "pre_diff_sdot": $pre_diff_sdot
         }}
           count_hash << pre_count_hash
       end
@@ -165,13 +173,14 @@ module Yogi
 
         post_counted_comma = count_em(text,",")
         post_counted_semicolon = count_em(text,";")
-        post_counted_l = count_em(text,"l")
+        post_counted_l = count_em(text,"ll")
         post_counted_3 = count_em(text,"3")
         post_counted_s = count_em(text,"s")
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
+        post_counted_equal = count_em(text,"s.")
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
@@ -185,6 +194,7 @@ module Yogi
         $pre_counted_px = variable_hash[i][file_name]['pre_counted_px']
         $pre_counted_sq_bracket = variable_hash[i][file_name]['pre_counted_sq_bracket']
         $pre_counted_equal = variable_hash[i][file_name]['pre_counted_equal']
+        $pre_counted_sdot = variable_hash[i][file_name]['pre_counted_sdot']
 
         $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
         $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
@@ -195,6 +205,7 @@ module Yogi
         $pre_diff_px = variable_hash[i][file_name]['pre_diff_px']
         $pre_diff_sq_bracket = variable_hash[i][file_name]['pre_diff_sq_bracket']
         $pre_diff_equal = variable_hash[i][file_name]['pre_diff_equal']
+        $pre_diff_sdot = variable_hash[i][file_name]['pre_diff_sdot']
         i += 1
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -205,12 +216,13 @@ module Yogi
         post_diff_px = $pre_counted_px - post_counted_px
         post_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
         post_diff_equal = $pre_counted_equal - post_counted_equal
+        post_diff_sdot = $pre_counted_sdot - post_counted_sdot
 
         # total changes made in each file
-        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket + $pre_diff_equal
+        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket + $pre_diff_equal + $pre_diff_sdot
 
         # total changes not fixed
-        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket + post_diff_equal
+        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket + post_diff_equal + post_diff_sdot
 
         pre_diff_array << total_pre_diff
         post_diff_array << total_post_diff

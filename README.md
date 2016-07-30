@@ -8,14 +8,14 @@ So this is good enough to start practice your debugging skills.
 You can check you progress or..
 when you get stuck,  you can fix your project anytime with just one word.
 
-latest stable version 0.3.5
+latest stable version 0.3.6
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yogi', '~> 0.3.5'
+gem 'yogi', '~> 0.3.6'
 ```
 
 And then execute:
