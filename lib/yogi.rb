@@ -268,9 +268,9 @@ module Yogi
       # puts item
         end
       #removes folder backupFiles
-      FileUtils.rm_r '.git/.backupFiles'
-      FileUtils.rm_r '.git/.ignoreme.json'
-      FileUtils.rm_r '.git/.ignoremefile.txt'
+      FileUtils.rm_r '.git/.backupFiles' if File.exist?('.git/.backupFiles')
+      FileUtils.rm_r '.git/.ignoreme.json' if File.exist?('.git/.ignoreme.json')
+      FileUtils.rm_r '.git/.ignoremefile.txt' if File.exist?('.git/.ignoremefile.txt')
       puts " Hope You had fun and try it again later."
       if OS.mac?
         file = File.join(__dir__, 'sound', 'Giving-up.mp3')
