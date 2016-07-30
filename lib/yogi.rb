@@ -180,7 +180,7 @@ module Yogi
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
-        post_counted_equal = count_em(text,"s.")
+        post_counted_sdot = count_em(text,"s.")
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
