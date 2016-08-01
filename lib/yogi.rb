@@ -259,6 +259,11 @@ module Yogi
           when 100
             reply = "Wow I'm impressed...wanne go again?"
             additional = 'Either you cheated or you are a true master of syntax errors because...'
+          else
+          reply = "WTF"
+        end
+
+        case
           when Time.now.monday?
             if OS.mac?
               cmd = ("say 'happy monday'")
@@ -314,14 +319,18 @@ module Yogi
             end
             additionalreply = "Do you never rest?"
           else
+            if OS.mac?
+              cmd = ("say 'WTF'")
+              system cmd
+            end
           reply = "WTF"
         end
 
       puts "================================="
       puts "#{additionalreply}"
-      puts " #{reply}"
+      puts "#{reply}"
       puts "You fixed #{fix}% of all the errors "
-      puts " #{additional}"
+      puts "#{additional}"
       puts "You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
