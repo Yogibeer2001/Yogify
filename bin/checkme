@@ -2,14 +2,17 @@
 
 require 'Yogi'
 require 'os'
+require 'etc'
+account = Etc.getlogin
+
 
 if File.exists?(".git/.ignoremefile.txt")
   errorCheck = Yogi::CheckErrors.new
   errorCheck.checker
 else
   if OS.mac?
-      cmd = ("say 'You fool should activate me first'")
+      cmd = ("say '#{account}, you fool should activate me first'")
       system cmd
   end
-  puts 'You should first activate the gem before you can check your progress'
+  puts "#{account}, you should first activate the gem before you can check your progress"
 end

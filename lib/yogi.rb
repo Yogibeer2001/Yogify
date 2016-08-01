@@ -329,7 +329,9 @@ module Yogi
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
+          name = "say '#{account}'"
           system cmd
+          system name
         # elsif  OS.linux?
         #   file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
         #   escfile = Shellwords.escape(file)
@@ -360,7 +362,9 @@ module Yogi
         file = File.join(__dir__, 'sound', 'Giving-up.mp3')
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
+        name = "say '#{account}'"
         system cmd
+        system name
       # elsif OS.linux?
       #   file = File.join(__dir__, 'sound', 'Giving-up.mp3')
       #   escfile = Shellwords.escape(file)

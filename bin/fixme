@@ -1,14 +1,17 @@
 #!/usr/bin/env ruby
 require 'Yogi'
 require 'os'
+require 'etc'
+account = Etc.getlogin
+
 
 if File.exists?(".git/.backupFiles")
 errorOut = Yogi::ErrorOut.new
 errorOut.undo
 else
   if OS.mac?
-      cmd = ("say 'You fool should activate me before you can fix me'")
+      cmd = ("say '#{account}, you fool should activate me before you can fix me'")
       system cmd
   end
-  puts "nothing to fix here"
+  puts "Nothing to fix here #{account}."
 end
