@@ -239,25 +239,26 @@ module Yogi
       fixed_errors = pre_diff - post_diff
       fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
+ p fix.class
  p fix
-      case fix
-      when fix == 0
-        puts "dont just sit around, get started to fix some stuff"
-      when fix > 0.000 && fix <= 25.000
-        puts "Not a bad start but im sure you can do better"
-      when fix > 25.000 && fix <= 50.000
-        puts "Well, well now we getting somewhere"
-      when fix > 50.000 && fix <= 75.000
-        puts "You see, not that hard...right?"
-      when fix > 75.000 && fix < 100.000
-        puts "Nearly there... you can do it"
-      when fix == 100
-        puts "Wow I'm impressed...wanne go again?"
-      when Time.now.tuesday?
-        puts "ruby-Tuesday"
-      else
-        puts "WTF"
-      end
+        case fix
+          when 0
+            puts "dont just sit around, get started to fix some stuff"
+          when 0..25
+            puts "Not a bad start but im sure you can do better"
+          when  25.000..50.000
+            puts "Well, well now we getting somewhere"
+          when 50.000..75.000
+            puts "You see, not that hard...right?"
+          when 75.000..100.000
+            puts "Nearly there... you can do it"
+          when 100
+            puts "Wow I'm impressed...wanne go again?"
+          when Time.now.tuesday?
+            puts "ruby-Tuesday"
+          else
+          puts "WTF"
+        end
 
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
