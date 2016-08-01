@@ -67,7 +67,7 @@ module Yogi
         $pre_counted_semicolon = count_em(text,";")
         $pre_counted_l = count_em(text,"ll")
         $pre_counted_3 = count_em(text,"3")
-        $pre_counted_s = count_em(text,"s")
+        $pre_counted_s = count_em(text,/[s]$/)
         $pre_counted_bracket = count_em(text,"}")
         $pre_counted_px = count_em(text,"px")
         $pre_counted_sq_bracket = count_em(text,">")
@@ -95,7 +95,7 @@ module Yogi
         post_counted_semicolon = count_em(text,";")
         post_counted_l = count_em(text,"ll")
         post_counted_3 = count_em(text,"3")
-        post_counted_s = count_em(text,"s")
+        post_counted_s = count_em(text,/[s]$/)
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
@@ -175,7 +175,7 @@ module Yogi
         post_counted_semicolon = count_em(text,";")
         post_counted_l = count_em(text,"ll")
         post_counted_3 = count_em(text,"3")
-        post_counted_s = count_em(text,"s")
+        post_counted_s = count_em(text,/[s]$/)
         post_counted_bracket = count_em(text,"}")
         post_counted_px = count_em(text,"px")
         post_counted_sq_bracket = count_em(text,">")
@@ -253,6 +253,22 @@ module Yogi
         #   escfile = Shellwords.escape(file)
         #   cmd = "aplay #{escfile}"
         #   system cmd
+        case
+  when fix.nil?
+    puts "dont just sit around, get started to fix some stuff"
+  when fix > 0 AND fix <= 25
+    puts "Not a bad start but im sure you can do better"
+  when fix > 25 AND fix <= 50
+    puts "Well, well now we getting somewhere"
+  when fix > 50 AND fix <= 75
+    puts "You see, not that hard...right?"
+  when fix > 75 AND fix < 100
+    puts "Nearly there... you can do it"
+  when fix == 100
+    puts "Wow I'm impressed...wanne go again?"
+  when Time.now.tuesday?
+    puts "ruby-Tuesday"
+end
         end
       end
     end
