@@ -243,13 +243,13 @@ module Yogi
       case fix
       when fix.nil?
         puts "dont just sit around, get started to fix some stuff"
-      when fix > 0 && fix <= 25
+      when fix > 0.000 && fix <= 25.000
         puts "Not a bad start but im sure you can do better"
-      when fix > 25 && fix <= 50
+      when fix > 25.000 && fix <= 50.000
         puts "Well, well now we getting somewhere"
-      when fix > 50 && fix <= 75
+      when fix > 50.000 && fix <= 75.000
         puts "You see, not that hard...right?"
-      when fix > 75 && fix < 100
+      when fix > 75.000 && fix < 100.000
         puts "Nearly there... you can do it"
       when fix == 100
         puts "Wow I'm impressed...wanne go again?"
