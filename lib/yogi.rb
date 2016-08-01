@@ -4,6 +4,9 @@ require 'fileutils'
 require 'json'
 require 'os'
 require 'shellwords'
+require 'etc'
+account = Etc.getlogin
+
 
 module Yogi
 
@@ -138,8 +141,9 @@ module Yogi
           count_hash << pre_count_hash
       end
       File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
-      puts "You can start your debugging..."
-      puts "if your are sick of it, just type...'fixme'"
+      puts "You can start your debugging now, #{account}"
+      puts "To check your progess type ..'checkme'"
+      puts "If your are sick of it, just type...'fixme'"
       if OS.mac?
         file = File.join(__dir__, 'sound', 'activated.mp3')
         escfile = Shellwords.escape(file)
@@ -242,20 +246,20 @@ module Yogi
 
         case fix
           when 0
-            reply = "dont just sit around, get started to fix some stuff!"
-            additional = 'You lazy $%##$#'
+            reply = "Don't just sit around #{account}, get started to fix some stuff!"
+            additional = 'You lazy $%##$#.'
           when 0..25
             reply = "Not a bad start but im sure you can do better!"
-            additional = 'You just getting started right?'
+            additional = "#{account}, you just getting started right?"
           when  25.000..50.000
             reply = "Well, well now we getting somewhere!"
             additional = 'Nearly half way...'
           when 50.000..75.000
             reply = "You see, not that hard...right?"
-            additional = 'nice just job, mate.'
+            additional = 'Nice just job, mate.'
           when 75.000..100.000
             reply = "Nearly there... you can do it!"
-            additional = 'just a few more...'
+            additional = 'Just a few more...'
           when 100
             reply = "Wow I'm impressed...wanne go again?"
             additional = 'Either you cheated or you are a true master of syntax errors because...'
@@ -266,58 +270,46 @@ module Yogi
         case
           when Time.now.monday?
             if OS.mac?
-              cmd = ("say 'happy monday'")
+              cmd = ("say 'happy monday #{account}'")
               system cmd
             end
             additionalreply = "Ruby-Monday"
           when Time.now.tuesday?
             if OS.mac?
-              cmd = ("say 'happy tuesday'")
+              cmd = ("say 'happy tuesday #{account}'")
               system cmd
             end
             additionalreply = "Ruby-Tuesday"
           when Time.now.wednesday?
             if OS.mac?
-              cmd = ("say 'happy wednesday'")
+              cmd = ("say 'happy wednesday #{account}'")
               system cmd
             end
             additionalreply = "Ruby-Wednesday"
           when Time.now.thursday?
             if OS.mac?
-              cmd = ("say 'happy thursday'")
-              system cmd
-            end
-            additionalreply = "Ruby-Thursday"
-          when Time.now.thursday?
-            if OS.mac?
-              cmd = ("say 'happy thursday'")
-              system cmd
-            end
-            additionalreply = "Ruby-Thursday"
-          when Time.now.thursday?
-            if OS.mac?
-              cmd = ("say 'happy thursday'")
+              cmd = ("say 'happy thursday #{account}'")
               system cmd
             end
             additionalreply = "Ruby-Thursday"
           when Time.now.friday?
             if OS.mac?
-              cmd = ("say 'Yeeaah...happy friday'")
+              cmd = ("say 'Yeeaah...happy friday #{account}'")
               system cmd
             end
             additionalreply = "Thank god it's Ruby-Friday"
           when Time.now.saturday?
             if OS.mac?
-              cmd = ("say 'Ruby-Ruby-Weekend'")
+              cmd = ("say 'Ruby-Ruby-Weekend #{account}'")
               system cmd
             end
-            additionalreply = "practicing on saturday....very good"
+            additionalreply = "Practicing on saturday....very good #{account}"
           when Time.now.sunday?
             if OS.mac?
               cmd = ("say 'Just another sunday?'")
               system cmd
             end
-            additionalreply = "Do you never rest?"
+            additionalreply = "#{account}, do you never rest?"
           else
             if OS.mac?
               cmd = ("say 'WTF'")
@@ -329,9 +321,9 @@ module Yogi
       puts "================================="
       puts "#{additionalreply}"
       puts "#{reply}"
-      puts "You fixed #{fix}% of all the errors "
+      puts "#{account}, you fixed #{fix}% of all the errors. "
       puts "#{additional}"
-      puts "You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
+      puts "#{account}, you fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
@@ -362,7 +354,8 @@ module Yogi
       FileUtils.rm_r '.git/.backupFiles' if File.exist?('.git/.backupFiles')
       FileUtils.rm_r '.git/.ignoreme.json' if File.exist?('.git/.ignoreme.json')
       FileUtils.rm_r '.git/.ignoremefile.txt' if File.exist?('.git/.ignoremefile.txt')
-      puts " Hope You had fun and try it again later."
+      puts "Hope You had fun and try it again later."
+      puts "See you next time #{account}"
       if OS.mac?
         file = File.join(__dir__, 'sound', 'Giving-up.mp3')
         escfile = Shellwords.escape(file)
