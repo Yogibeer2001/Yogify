@@ -5,7 +5,7 @@ require 'json'
 require 'os'
 require 'shellwords'
 require 'etc'
-account = Etc.getlogin
+$account = Etc.getlogin
 
 
 module Yogi
@@ -141,7 +141,7 @@ module Yogi
           count_hash << pre_count_hash
       end
       File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
-      puts "You can start your debugging now, #{account}"
+      puts "You can start your debugging now, #{$account}"
       puts "To check your progess type ..'checkme'"
       puts "If your are sick of it, just type...'fixme'"
       if OS.mac?
@@ -246,11 +246,11 @@ module Yogi
 
         case fix
           when 0
-            reply = "Don't just sit around #{account}, get started to fix some stuff!"
+            reply = "Don't just sit around #{$account}, get started to fix some stuff!"
             additional = 'You lazy $%##$#.'
           when 0..25
             reply = "Not a bad start but im sure you can do better!"
-            additional = "#{account}, you just getting started right?"
+            additional = "#{$account}, you just getting started right?"
           when  25.000..50.000
             reply = "Well, well now we getting somewhere!"
             additional = 'Nearly half way...'
@@ -270,46 +270,46 @@ module Yogi
         case
           when Time.now.monday?
             if OS.mac?
-              cmd = ("say 'happy monday #{account}'")
+              cmd = ("say 'happy monday #{$account}'")
               system cmd
             end
             additionalreply = "Ruby-Monday"
           when Time.now.tuesday?
             if OS.mac?
-              cmd = ("say 'happy tuesday #{account}'")
+              cmd = ("say 'happy tuesday #{$account}'")
               system cmd
             end
             additionalreply = "Ruby-Tuesday"
           when Time.now.wednesday?
             if OS.mac?
-              cmd = ("say 'happy wednesday #{account}'")
+              cmd = ("say 'happy wednesday #{$account}'")
               system cmd
             end
             additionalreply = "Ruby-Wednesday"
           when Time.now.thursday?
             if OS.mac?
-              cmd = ("say 'happy thursday #{account}'")
+              cmd = ("say 'happy thursday #{$account}'")
               system cmd
             end
             additionalreply = "Ruby-Thursday"
           when Time.now.friday?
             if OS.mac?
-              cmd = ("say 'Yeeaah...happy friday #{account}'")
+              cmd = ("say 'Yeeaah...happy friday #{$account}'")
               system cmd
             end
             additionalreply = "Thank god it's Ruby-Friday"
           when Time.now.saturday?
             if OS.mac?
-              cmd = ("say 'Ruby-Ruby-Weekend #{account}'")
+              cmd = ("say 'Ruby-Ruby-Weekend #{$account}'")
               system cmd
             end
-            additionalreply = "Practicing on saturday....very good #{account}"
+            additionalreply = "Practicing on saturday....very good #{$account}"
           when Time.now.sunday?
             if OS.mac?
               cmd = ("say 'Just another sunday?'")
               system cmd
             end
-            additionalreply = "#{account}, do you never rest?"
+            additionalreply = "#{$account}, do you never rest?"
           else
             if OS.mac?
               cmd = ("say 'WTF'")
@@ -321,15 +321,15 @@ module Yogi
       puts "================================="
       puts "#{additionalreply}"
       puts "#{reply}"
-      puts "#{account}, you fixed #{fix}% of all the errors. "
+      puts "#{$account}, you fixed #{fix}% of all the errors. "
       puts "#{additional}"
-      puts "#{account}, you fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
+      puts "#{$account}, you fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
-          name = "say '#{account}'"
+          name = "say '#{$account}'"
           system cmd
           system name
         # elsif  OS.linux?
@@ -357,12 +357,12 @@ module Yogi
       FileUtils.rm_r '.git/.ignoreme.json' if File.exist?('.git/.ignoreme.json')
       FileUtils.rm_r '.git/.ignoremefile.txt' if File.exist?('.git/.ignoremefile.txt')
       puts "Hope You had fun and try it again later."
-      puts "See you next time #{account}"
+      puts "See you next time #{$account}"
       if OS.mac?
         file = File.join(__dir__, 'sound', 'Giving-up.mp3')
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
-        name = "say '#{account}'"
+        name = "say '#{$account}'"
         system cmd
         system name
       # elsif OS.linux?

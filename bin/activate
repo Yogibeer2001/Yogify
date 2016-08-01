@@ -3,16 +3,16 @@ require 'Yogi'
 require 'os'
 require 'etc'
 
-account = Etc.getlogin
-puts "#{account}"
+$account = Etc.getlogin
+puts "#{$account}"
 
 
 if File.exists?(".git/.ignoremefile.txt")
   if OS.mac?
-    cmd = ("say '#{account}, you fool, can not activate me twice'")
+    cmd = ("say '#{$account}, you fool, can not activate me twice'")
     system cmd
   end
-  puts "#{account} you fool, can not activate me twice"
+  puts "#{$account} you fool, can not activate me twice"
 else
   setup = Yogi::Setup.new
   setup.setup
