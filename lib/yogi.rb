@@ -256,13 +256,13 @@ module Yogi
         case
   when fix.nil?
     puts "dont just sit around, get started to fix some stuff"
-  when fix > 0 AND fix <= 25
+  when 0 < fix <= 25
     puts "Not a bad start but im sure you can do better"
-  when fix > 25 AND fix <= 50
+  when  25 < fix <= 50
     puts "Well, well now we getting somewhere"
-  when fix > 50 AND fix <= 75
+  when  50 < fix <= 75
     puts "You see, not that hard...right?"
-  when fix > 75 AND fix < 100
+  when  75 < fix < 100
     puts "Nearly there... you can do it"
   when fix == 100
     puts "Wow I'm impressed...wanne go again?"
