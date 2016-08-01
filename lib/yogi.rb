@@ -239,30 +239,88 @@ module Yogi
       fixed_errors = pre_diff - post_diff
       fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
- p fix.class
- p fix
+
         case fix
           when 0
-            puts "dont just sit around, get started to fix some stuff"
+            reply = "dont just sit around, get started to fix some stuff!"
+            additional = 'You lazy $%##$#'
           when 0..25
-            puts "Not a bad start but im sure you can do better"
+            reply = "Not a bad start but im sure you can do better!"
+            additional = 'You just getting started right?'
           when  25.000..50.000
-            puts "Well, well now we getting somewhere"
+            reply = "Well, well now we getting somewhere!"
+            additional = 'Nearly half way...'
           when 50.000..75.000
-            puts "You see, not that hard...right?"
+            reply = "You see, not that hard...right?"
+            additional = 'nice just job, mate.'
           when 75.000..100.000
-            puts "Nearly there... you can do it"
+            reply = "Nearly there... you can do it!"
+            additional = 'just a few more...'
           when 100
-            puts "Wow I'm impressed...wanne go again?"
+            reply = "Wow I'm impressed...wanne go again?"
+            additional = 'Either you cheated or you are a true master of syntax errors because...'
+          when Time.now.monday?
+            if OS.mac?
+              cmd = "say 'happy monday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Monday"
           when Time.now.tuesday?
-            puts "ruby-Tuesday"
+            if OS.mac?
+              cmd = "say 'happy tuesday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Tuesday"
+          when Time.now.wednesday?
+            if OS.mac?
+              cmd = "say 'happy wednesday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Wednesday"
+          when Time.now.thursday?
+            if OS.mac?
+              cmd = "say 'happy thursday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Thursday"
+          when Time.now.thursday?
+            if OS.mac?
+              cmd = "say 'happy thursday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Thursday"
+          when Time.now.thursday?
+            if OS.mac?
+              cmd = "say 'happy thursday'"
+              system cmd
+            end
+            additionalreply = "Ruby-Thursday"
+          when Time.now.friday?
+            if OS.mac?
+              cmd = "say 'Yeeaah...happy friday'"
+              system cmd
+            end
+            additionalreply = "Thank god it's Ruby-Friday"
+          when Time.now.saturday?
+            if OS.mac?
+              cmd = "say 'Ruby-Ruby-Weekend'"
+              system cmd
+            end
+            additionalreply = "practicing on saturday....very good"
+          when Time.now.sunday?
+            if OS.mac?
+              cmd = "say 'Just another sunday?'"
+              system cmd
+            end
+            additionalreply = "Do you never rest?"
           else
-          puts "WTF"
+          reply = "WTF"
         end
 
       puts "================================="
-      puts " You fixed #{fix}% of all the errors "
-      puts " You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
+      puts additionalreply
+      puts " #{reply} You fixed #{fix}% of all the errors "
+      puts " #{additional} You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
