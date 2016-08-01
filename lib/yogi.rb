@@ -239,6 +239,7 @@ module Yogi
       fixed_errors = pre_diff - post_diff
       fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
+
       case fix
       when fix.nil?
         puts "dont just sit around, get started to fix some stuff"
@@ -254,7 +255,9 @@ module Yogi
         puts "Wow I'm impressed...wanne go again?"
       when Time.now.tuesday?
         puts "ruby-Tuesday"
-    end
+      else
+        puts "WTF"
+      end
 
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
