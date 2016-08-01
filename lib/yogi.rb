@@ -239,9 +239,9 @@ module Yogi
       fixed_errors = pre_diff - post_diff
       fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
-
+ p fix
       case fix
-      when fix.nil?
+      when fix == 0
         puts "dont just sit around, get started to fix some stuff"
       when fix > 0.000 && fix <= 25.000
         puts "Not a bad start but im sure you can do better"
@@ -273,6 +273,7 @@ module Yogi
         #   escfile = Shellwords.escape(file)
         #   cmd = "aplay #{escfile}"
         #   system cmd
+
         end
       end
     end
