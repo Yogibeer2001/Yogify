@@ -239,6 +239,23 @@ module Yogi
       fixed_errors = pre_diff - post_diff
       fix = ((fixed_errors)/pre_diff)*100
       fix = fix.round(3)
+      case fix
+      when fix.nil?
+        puts "dont just sit around, get started to fix some stuff"
+      when fix > 0 && fix <= 25
+        puts "Not a bad start but im sure you can do better"
+      when fix > 25 && fix <= 50
+        puts "Well, well now we getting somewhere"
+      when fix > 50 && fix <= 75
+        puts "You see, not that hard...right?"
+      when fix > 75 && fix < 100
+        puts "Nearly there... you can do it"
+      when fix == 100
+        puts "Wow I'm impressed...wanne go again?"
+      when Time.now.tuesday?
+        puts "ruby-Tuesday"
+    end
+
       puts "================================="
       puts " You fixed #{fix}% of all the errors "
       puts " You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
@@ -253,22 +270,6 @@ module Yogi
         #   escfile = Shellwords.escape(file)
         #   cmd = "aplay #{escfile}"
         #   system cmd
-        case
-  when fix.nil?
-    puts "dont just sit around, get started to fix some stuff"
-  when fix > 0 && fix <= 25
-    puts "Not a bad start but im sure you can do better"
-  when fix > 25 && fix <= 50
-    puts "Well, well now we getting somewhere"
-  when fix > 50 && fix <= 75
-    puts "You see, not that hard...right?"
-  when fix > 75 && fix < 100
-    puts "Nearly there... you can do it"
-  when fix == 100
-    puts "Wow I'm impressed...wanne go again?"
-  when Time.now.tuesday?
-    puts "ruby-Tuesday"
-end
         end
       end
     end
