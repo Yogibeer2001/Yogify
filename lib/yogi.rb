@@ -261,55 +261,55 @@ module Yogi
             additional = 'Either you cheated or you are a true master of syntax errors because...'
           when Time.now.monday?
             if OS.mac?
-              cmd = "say 'happy monday'"
+              cmd = ("say 'happy monday'")
               system cmd
             end
             additionalreply = "Ruby-Monday"
           when Time.now.tuesday?
             if OS.mac?
-              cmd = "say 'happy tuesday'"
+              cmd = ("say 'happy tuesday'")
               system cmd
             end
             additionalreply = "Ruby-Tuesday"
           when Time.now.wednesday?
             if OS.mac?
-              cmd = "say 'happy wednesday'"
+              cmd = ("say 'happy wednesday'")
               system cmd
             end
             additionalreply = "Ruby-Wednesday"
           when Time.now.thursday?
             if OS.mac?
-              cmd = "say 'happy thursday'"
+              cmd = ("say 'happy thursday'")
               system cmd
             end
             additionalreply = "Ruby-Thursday"
           when Time.now.thursday?
             if OS.mac?
-              cmd = "say 'happy thursday'"
+              cmd = ("say 'happy thursday'")
               system cmd
             end
             additionalreply = "Ruby-Thursday"
           when Time.now.thursday?
             if OS.mac?
-              cmd = "say 'happy thursday'"
+              cmd = ("say 'happy thursday'")
               system cmd
             end
             additionalreply = "Ruby-Thursday"
           when Time.now.friday?
             if OS.mac?
-              cmd = "say 'Yeeaah...happy friday'"
+              cmd = ("say 'Yeeaah...happy friday'")
               system cmd
             end
             additionalreply = "Thank god it's Ruby-Friday"
           when Time.now.saturday?
             if OS.mac?
-              cmd = "say 'Ruby-Ruby-Weekend'"
+              cmd = ("say 'Ruby-Ruby-Weekend'")
               system cmd
             end
             additionalreply = "practicing on saturday....very good"
           when Time.now.sunday?
             if OS.mac?
-              cmd = "say 'Just another sunday?'"
+              cmd = ("say 'Just another sunday?'")
               system cmd
             end
             additionalreply = "Do you never rest?"
@@ -318,9 +318,11 @@ module Yogi
         end
 
       puts "================================="
-      puts additionalreply
-      puts " #{reply} You fixed #{fix}% of all the errors "
-      puts " #{additional} You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
+      puts "#{additionalreply}"
+      puts " #{reply}"
+      puts "You fixed #{fix}% of all the errors "
+      puts " #{additional}"
+      puts "You fixed #{fixed_errors.to_i} errors, #{post_diff.to_i} more to go."
       puts "================================="
         if  OS.mac?
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
