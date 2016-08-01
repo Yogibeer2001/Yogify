@@ -141,7 +141,7 @@ module Yogi
           count_hash << pre_count_hash
       end
       File.open('.git/.ignoreme.json', "a") {|file| file.write count_hash.to_json}
-      puts "You can start your debugging now, #{$account}"
+      puts "You can start your debugging now, #{$account}!"
       puts "To check your progess type ..'checkme'"
       puts "If your are sick of it, just type...'fixme'"
       if OS.mac?
@@ -329,9 +329,7 @@ module Yogi
           file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
           escfile = Shellwords.escape(file)
           cmd = "afplay #{escfile}"
-          name = "say '#{$account}'"
           system cmd
-          system name
         # elsif  OS.linux?
         #   file = File.join(__dir__, 'sound', 'oh-yeah.mp3')
         #   escfile = Shellwords.escape(file)
@@ -363,8 +361,8 @@ module Yogi
         escfile = Shellwords.escape(file)
         cmd = "afplay #{escfile}"
         name = "say '#{$account}'"
-        system cmd
         system name
+        system cmd
       # elsif OS.linux?
       #   file = File.join(__dir__, 'sound', 'Giving-up.mp3')
       #   escfile = Shellwords.escape(file)

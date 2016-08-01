@@ -4,7 +4,6 @@ require 'os'
 require 'etc'
 
 $account = Etc.getlogin
-puts "#{$account}"
 
 
 if File.exists?(".git/.ignoremefile.txt")
