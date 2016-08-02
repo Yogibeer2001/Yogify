@@ -20,6 +20,7 @@ module Yogi
   $pre_counted_sq_bracket = 0
   $pre_counted_equal = 0
   $pre_counted_sdot = 0
+  $pre_counted_underscore = 0
 
   $pre_diff_comma = 0
   $pre_diff_semicolon = 0
@@ -31,6 +32,7 @@ module Yogi
   $pre_diff_sq_bracket = 0
   $pre_diff_equal = 0
   $pre_diff_sdot = 0
+  $pre_diff_underscore = 0
 
 
   class Setup
@@ -76,6 +78,7 @@ module Yogi
         $pre_counted_sq_bracket = count_em(text,">")
         $pre_counted_equal = count_em(text,"==")
         $pre_counted_sdot = count_em(text,/s\./)
+        $pre_counted_underscore = count_em(text,"_")
 
         # To merely print the contents of the file, use:
         new_contents1 = text.gsub(";"){rand(2).zero? ? ";" : ":"}
@@ -88,9 +91,10 @@ module Yogi
         new_contents8 = new_contents7.gsub(">"){rand(2).zero? ? "<" : ">"}
         new_contents9 = new_contents8.gsub("=="){rand(2).zero? ? "==" : "="}
         new_contents10 = new_contents9.gsub(/s\./){rand(2).zero? ? ".s" : "."}
+        new_contents11 = new_contents10.gsub("_"){rand(2).zero? ? "" : "-"}
 
         # To write changes to the file, use:
-        File.open(file_name, "w") {|file| file.puts new_contents10 }
+        File.open(file_name, "w") {|file| file.puts new_contents11 }
 
         text =  File.open(file_name, "r"){ |file| file.read }#File.read(file_name)
         #counts ocurences in the file after initial change
@@ -104,6 +108,7 @@ module Yogi
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
         post_counted_sdot = count_em(text,/s\./)
+        post_counted_underscore = count_em(text,"_")
 
         $pre_diff_comma = $pre_counted_comma - post_counted_comma
         $pre_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -115,6 +120,7 @@ module Yogi
         $pre_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
         $pre_diff_equal = $pre_counted_equal - post_counted_equal
         $pre_diff_sdot = $pre_counted_sdot - post_counted_sdot
+        $pre_diff_underscore = $pre_counted_underscore - post_counted_underscore
 
         pre_count_hash = {file_name => {
           "pre_counted_comma": $pre_counted_comma,
@@ -127,6 +133,7 @@ module Yogi
           "pre_counted_sq_bracket": $pre_counted_sq_bracket,
           "pre_counted_equal": $pre_counted_equal,
           "pre_counted_sdot": $pre_counted_sdot,
+          "pre_counted_underscore": $pre_counted_underscore,
           "pre_diff_comma": $pre_diff_comma,
           "pre_diff_semicolon": $pre_diff_semicolon,
           "pre_diff_l": $pre_diff_l,
@@ -136,7 +143,8 @@ module Yogi
           "pre_diff_px": $pre_diff_px,
           "pre_diff_sq_bracket": $pre_diff_sq_bracket,
           "pre_diff_equal": $pre_diff_equal,
-          "pre_diff_sdot": $pre_diff_sdot
+          "pre_diff_sdot": $pre_diff_sdot,
+          "pre_diff_underscore": $pre_diff_underscore
         }}
           count_hash << pre_count_hash
       end
@@ -185,6 +193,7 @@ module Yogi
         post_counted_sq_bracket = count_em(text,">")
         post_counted_equal = count_em(text,"==")
         post_counted_sdot = count_em(text,/s\./)
+        post_counted_underscore = count_em(text,"_")
 
         json_file = File.read(".git/.ignoreme.json")
         variable_hash = JSON.parse(json_file)
@@ -199,6 +208,7 @@ module Yogi
         $pre_counted_sq_bracket = variable_hash[i][file_name]['pre_counted_sq_bracket']
         $pre_counted_equal = variable_hash[i][file_name]['pre_counted_equal']
         $pre_counted_sdot = variable_hash[i][file_name]['pre_counted_sdot']
+        $pre_counted_underscore = variable_hash[i][file_name]['pre_counted_underscore']
 
         $pre_diff_comma = variable_hash[i][file_name]['pre_diff_comma']
         $pre_diff_semicolon = variable_hash[i][file_name]['pre_diff_semicolon']
@@ -210,6 +220,7 @@ module Yogi
         $pre_diff_sq_bracket = variable_hash[i][file_name]['pre_diff_sq_bracket']
         $pre_diff_equal = variable_hash[i][file_name]['pre_diff_equal']
         $pre_diff_sdot = variable_hash[i][file_name]['pre_diff_sdot']
+        $pre_diff_underscore = variable_hash[i][file_name]['pre_diff_underscore']
         i += 1
         post_diff_comma = $pre_counted_comma - post_counted_comma
         post_diff_semicolon = $pre_counted_semicolon - post_counted_semicolon
@@ -221,12 +232,13 @@ module Yogi
         post_diff_sq_bracket = $pre_counted_sq_bracket - post_counted_sq_bracket
         post_diff_equal = $pre_counted_equal - post_counted_equal
         post_diff_sdot = $pre_counted_sdot - post_counted_sdot
+        post_diff_underscore = $pre_counted_underscore - post_counted_underscore
 
         # total changes made in each file
-        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket + $pre_diff_equal + $pre_diff_sdot
+        total_pre_diff = $pre_diff_comma + $pre_diff_semicolon + $pre_diff_l + $pre_diff_3 + $pre_diff_s + $pre_diff_bracket + $pre_diff_px + $pre_diff_sq_bracket + $pre_diff_equal + $pre_diff_sdot + $pre_diff_underscore
 
         # total changes not fixed
-        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket + post_diff_equal + post_diff_sdot
+        total_post_diff = post_diff_comma + post_diff_semicolon + post_diff_l + post_diff_3 + post_diff_s + post_diff_bracket + post_diff_px + post_diff_sq_bracket + post_diff_equal + post_diff_sdot +post_diff_underscore
 
         pre_diff_array << total_pre_diff
         post_diff_array << total_post_diff

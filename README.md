@@ -8,14 +8,14 @@ So this is good enough to start practice your debugging skills.
 You can check you progress or..
 when you get stuck,  you can fix your project anytime with just one word.
 
-latest stable version 0.3.7
+latest stable version 0.3.9
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yogi', '~> 0.3.7'
+gem 'yogi', '~> 0.3.9'
 ```
 
 And then execute:
@@ -36,7 +36,7 @@ Sick of debugging type _"fixme"_
 
 ## in Planing
 
-increase in error complexity and more status updates
+timing of the  debugging process
 
 
 ## Contributing
